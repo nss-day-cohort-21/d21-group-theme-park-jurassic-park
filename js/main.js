@@ -1,3 +1,6 @@
 'use strict';
 
-console.log("hey");
+var template = require('./templates');
+
+template.loadNavbar();
+
