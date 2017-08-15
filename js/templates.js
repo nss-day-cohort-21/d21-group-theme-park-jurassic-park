@@ -1,5 +1,7 @@
 'use strict';
 
+var Park = require('./data_loader');
+
 var Templates = {
   loadNavbar: function() {
     $('body').before(`
@@ -16,7 +18,33 @@ var Templates = {
       </div>
     </nav>
     `);
+  },
+
+  loadAreas: function(){
+    Park.areasCall().then(function(data){
+      console.log(data);
+      $('#main-content').append(
+        `<div class=row>
+          <div class=col-4>
+          </div>
+          <div class=col-8>
+            <div class=row>
+            </div>
+          </div>
+        </div>`);
+
+        $(data).each((index, item) =>{
+          $('.col-8 > .row').append(
+            `<div class="col-4 border rounded" id=gridArea${index} style="background-color:#${item.colorTheme};height:250px">
+            <h2>${item.name}</h2>
+            </div>`
+          );
+          // $(`#gridArea${index}`).attr("style", `background-color:#${item.colorTheme}`);
+        });
+
+    });
   }
+
 };
 
 module.exports = Templates;
