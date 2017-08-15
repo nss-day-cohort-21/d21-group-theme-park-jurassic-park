@@ -1,29 +1,24 @@
 'use strict';
 var Park = {
+  attractionsNameArray: [],
 
-// attractionsArr: [],
+  attractionsCall: function() {
+    return new Promise(function(resolve, reject) {
+      $.ajax({
+        url: 'https://android-chat-app-c66de.firebaseio.com/attractions.json'
+      }).done(function(data) {
+        let mapArr = Park.createAttractionsList(data);
+        resolve(mapArr);
+      });
+    });
+  },
 
-//load attractions from firebase
-loadAttractionsList: function () {
-		$.ajax ({
-			url: 'https://android-chat-app-c66de.firebaseio.com/attractions.json'
-		}).done(function(data){
-			this.createArray(data);
-
-		});
-},
-
-//create attractions array w/ attractionsList
-
-createArray: function (data) {
-	let attractionsArr = [];
-	data.forEach((item)=>{
-		attractionsArr.push(item.name);
-	});
-			// console.log("attractions array: ", arr);
-	return attractionsArr;
-}
+  createAttractionsList: function(data) {
+    let attractionsNames = _.map(data, function(item) {
+      return item.name;
+    });
+    return attractionsNames;
+  }
 };
-console.log(Park.loadAttractionsList());
 
 module.exports = Park;
