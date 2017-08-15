@@ -24,6 +24,10 @@ var Park = {
     });
   },
 
+  attractionByNameCall: function(userInput) {
+
+  },
+
   createAttractionsList: function(data) {
     let attractionsNames = _.map(data, function(item) {
       return item.name;
