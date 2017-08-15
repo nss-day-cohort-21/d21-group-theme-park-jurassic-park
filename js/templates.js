@@ -12,12 +12,24 @@ var Templates = {
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
+          <input id="user-input" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
           <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
+
 
       </div>
     </nav>
     `);
+  },
+
+    // TODO: highlight border of grid instead of write names to DOM.
+  loadAttractionsToDOM: function(data){
+    $('.attractions-list').html('')
+    _.forEach(data, function(item) {
+      $('.attractions-list').append(`<a href="#">${item.name}</a><br>`)
+    });
   },
 
   loadAreas: function(){
@@ -41,6 +53,7 @@ var Templates = {
           );
           // $(`#gridArea${index}`).attr("style", `background-color:#${item.colorTheme}`);
         });
+
 
     });
   }

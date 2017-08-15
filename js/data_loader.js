@@ -1,4 +1,5 @@
 'use strict';
+
 var Park = {
   attractionsNameArray: [],
 
@@ -22,6 +23,16 @@ var Park = {
         resolve(mapArr);
       });
     });
+  },
+
+  attractionByNameCall: function(userInput) {
+  	return new Promise(function(resolve, reject){
+	  	$.ajax({
+	  		url: `https://android-chat-app-c66de.firebaseio.com/attractions.json?orderBy="name"&equalTo="${userInput}"`
+	  	}).done(function(data){
+	  		resolve(data);
+	  	});
+  	});
   },
 
   createAttractionsList: function(data) {
