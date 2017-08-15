@@ -32,3 +32,4 @@ var Park = {
 };
 
 Park.loadAreas();
+
