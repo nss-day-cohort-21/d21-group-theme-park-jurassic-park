@@ -2,6 +2,17 @@
 var Park = {
   attractionsNameArray: [],
 
+  areasCall: function() {
+    return new Promise(function(resolve, reject) {
+      $.ajax({
+        url: 'https://android-chat-app-c66de.firebaseio.com/areas.json'
+      }).done(function(data) {
+      	console.log("data in areas", data);
+        resolve(data);
+      });
+    });
+  },
+
   attractionsCall: function() {
     return new Promise(function(resolve, reject) {
       $.ajax({
@@ -20,5 +31,7 @@ var Park = {
     return attractionsNames;
   }
 };
+
+Park.areasCall();
 
 module.exports = Park;
