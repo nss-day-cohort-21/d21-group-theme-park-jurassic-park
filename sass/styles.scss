@@ -6,3 +6,23 @@
   max-width: 20rem;
  }
 }
+
+.footer {
+  background: black;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0px;
+}
+
+.footer span {
+  color: yellow;
+}
+
+#demo {
+  color: red;
+}
+
+.btn-warning {
+  background-color: yellow !important;
+}
