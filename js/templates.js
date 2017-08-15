@@ -16,6 +16,13 @@ var Templates = {
       </div>
     </nav>
     `);
+  },
+    // TODO: highlight border of grid instead of write names to DOM.
+  loadAttractionsToDOM: function(data){
+    $('.attractions-list').html('')
+    _.forEach(data, function(item) {
+      $('.attractions-list').append(`<a href="#">${item.name}</a><br>`)
+    });
   }
 };
 
