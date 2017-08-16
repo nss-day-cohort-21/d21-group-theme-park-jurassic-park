@@ -39,4 +39,6 @@ var Handlers = {
 
 Handlers.loadAttractionsOnEnterKey();
 Handlers.loadAttractionsOnClickArea();
-Handlers.loadAttractionsOnClickArea();
+Handlers.userInputOnEnterKey();
+module.exports = Handlers;
+

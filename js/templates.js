@@ -58,7 +58,7 @@ var Templates = {
                                    <img class="img-thumbnail img">
                                  </div>
                                </div>
-                               <div class="col-4">
+                               <div id="${item.id}" class="col-4">
                                  <div class="img-wrapper">
                                    <a id="${item.id}" href="#" class="img-content">${item.name}</a>
                                    <img class="img-thumbnail img" id="${item.id}">
@@ -80,7 +80,6 @@ var Templates = {
 
             });
   }
-
 };
 
 module.exports = Templates;
