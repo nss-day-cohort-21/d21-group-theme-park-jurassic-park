@@ -47,17 +47,13 @@ var Templates = {
 
         $(data).each((index, item) =>{
           $('.col-8 > .row').append(
-            `<div class="col-4 border rounded" id=gridArea${index} style="background-color:#${item.colorTheme};height:250px">
+            `<div class="col-4 border rounded parkArea" id=gridArea${index+1} style="background-color:#${item.colorTheme};height:250px">
             <h2>${item.name}</h2>
             </div>`
           );
-          // $(`#gridArea${index}`).attr("style", `background-color:#${item.colorTheme}`);
         });
-
-
     });
   }
-
 };
 
 module.exports = Templates;
