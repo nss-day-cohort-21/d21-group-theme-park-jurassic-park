@@ -20,25 +20,17 @@ var Handlers = {
   },
   loadAttractionsOnClickArea: function() {
 
-
     $(".grid-row").click(function(event){
-
 
       templates.loadAttractionsByArea(dataLoader.attractionsCallByAreaId, event.target.id);
 
-        
-
-      // https://android-chat-app-c66de.firebaseio.com/attractions/.json?orderBy="area_id"&equalTo=1
     })
   }
-
-
 
 
 };
 
 Handlers.loadAttractionsOnEnterKey();
 Handlers.loadAttractionsOnClickArea();
-Handlers.userInputOnEnterKey();
 module.exports = Handlers;
 

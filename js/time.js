@@ -6,12 +6,12 @@ let currentTime = new Date();
 let hours = currentTime.getHours();
 let minutes = currentTime.getMinutes();
 let currentTotalMinutes = (hours*60) + minutes;
-console.log("currentTotalMinutes", currentTotalMinutes);
+
 
 var Time = {
   loadOpenAttractions: function(){
     Park.attractionsCall().then(function(data) {
-      // console.log("data", data);
+
       $(data).each((index, item)=>{
         if (item.times !== undefined) {
           let eachAttTimes = item.times;
@@ -57,7 +57,6 @@ var Time = {
               // *************************************
               // CALL THE WRITE T0 SIDEBAR FUNCTION
               // *************************************
-              console.log("item" ,item);
             }
           }
         } else {
