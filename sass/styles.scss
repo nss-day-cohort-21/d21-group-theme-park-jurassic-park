@@ -28,19 +28,19 @@
 }
 .img-thumbnail {
   padding: 0;
-  border: 0;
+  border: 0; 
+  width: 100%;
+  height: 10rem; 
+    z-index: -1;
 }
 
 .img {
-  background-image: url('https://res.cloudinary.com/gdiaz/image/upload/v1502845267/game-map_f5316h.jpg');
-  background-attachment: fixed;
-  width: 100%;
-  height: 10rem;
+  background-image: url("../images/map6.jpg");
+  background-size: 100% 100%;
 }
 
 .col-4 {
-  padding: 0.1rem;
-}
+  padding: 0.1rem; }
 
 .img-wrapper {
   display: flex;
@@ -54,15 +54,11 @@ a.img-content {
   color: #f3f3f3;
   border-bottom: 1px solid transparent;
   transition: all 0.75s ease-in-out;
-  -webkit-transition: all 0.05S ease-in-out;
-}
+  -webkit-transition: all 0.05S ease-in-out; }
 
 a.img-content:hover {
   color: #d0d0d0;
   border-bottom: 1px solid #d0d0d0;
   transition: all 0.75s ease-in-out;
-  -webkit-transition: all 0.75 ease-in-out;
-}
-
-
+  -webkit-transition: all 0.75 ease-in-out; }
 

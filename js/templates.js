@@ -37,13 +37,13 @@ var Templates = {
               gridElement = `<div id="" class="col-4">
                                  <div class="img-wrapper">
                                    <a href="#" class="img-content"></a>
-                                   <img class="img-thumbnail img">
+                                   <img class="img-thumbnail">
                                  </div>
                                </div>
                                <div id="${item.id + 1}" class="col-4">
                                  <div class="img-wrapper">
                                    <a href="#" class="img-content">${item.name}</a>
-                                   <img class="img-thumbnail img">
+                                   <img class="img-thumbnail">
                                  </div>
                                </div>`;
 
@@ -52,7 +52,7 @@ var Templates = {
               gridElement = `<div id="${item.id}" class="col-4">
                                <div class="img-wrapper">
                                  <a href="#" class="img-content">${item.name}</a>
-                                 <img class="img-thumbnail img">
+                                 <img class="img-thumbnail">
                                </div>
                              </div>`;
 
