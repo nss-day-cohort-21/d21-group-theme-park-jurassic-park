@@ -14,16 +14,16 @@ var Park = {
     });
   },
 
-  attractionsCall: function() {
-    return new Promise(function(resolve, reject) {
-      $.ajax({
-        url: 'https://android-chat-app-c66de.firebaseio.com/attractions.json'
-      }).done(function(data) {
-        let mapArr = Park.createAttractionsList(data);
-        resolve(mapArr);
-      });
-    });
-  },
+  // attractionsCall: function() {
+  //   return new Promise(function(resolve, reject) {
+  //     $.ajax({
+  //       url: 'https://android-chat-app-c66de.firebaseio.com/attractions.json'
+  //     }).done(function(data) {
+  //       // let mapArr = Park.createAttractionsList(data);
+  //       resolve(data);
+  //     });
+  //   });
+  // },
 
   attractionByNameCall: function(userInput) {
   	return new Promise(function(resolve, reject){
@@ -40,7 +40,22 @@ var Park = {
       return item.name;
     });
     return attractionsNames;
-  }
+  },
+
+  attractionsCall: function(parameter,value) {
+    return new Promise(function(resolve, reject) {
+      $.ajax({
+        url: `https://android-chat-app-c66de.firebaseio.com/attractions.json?orderBy="${parameter}"&equalTo="${value}"`
+      }).done(function(data) {
+        // let mapArr = Park.createAttractionsList(data);
+        resolve(data);
+      });
+    });
+  },
+
+
+
+
 };
 
 

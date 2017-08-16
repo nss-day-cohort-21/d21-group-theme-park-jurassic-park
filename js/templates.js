@@ -22,11 +22,37 @@ var Templates = {
   },
 
     // TODO: highlight border of grid instead of write names to DOM.
-  loadAttractionsToDOM: function(data){
+  loadAttractionsToDomOnSearch: function(data){
     $('.attractions-list').html('')
     _.forEach(data, function(item) {
+      console.log("data form loadattractions", data);
+        
       $('.attractions-list').append(`<a href="#">${item.name}</a><br>`)
     });
+  },
+
+  loadAttractionsByArea: function(attractionCall) {
+    let accordion = "";
+      attractionCall()
+        .then(function (data) {
+          _.forEach(data, function(item) {
+            accordion = `
+               <div class="item">
+                <a data-toggle="collapse" data-parent="#attraction-accordion" href="#${item.id}" aria-expanded="false" aria-controls="${item.id}">
+                  ${item.name}
+                </a>
+                <div id="${item.id}" class="collapse show" role="tabpanel">
+                  <p class="mb-3">
+                    ${item.description}
+                  </p>
+                </div>
+              </div>
+            `
+            $('#attraction-accordion').append(accordion);
+          });
+            
+
+        });
   },
 
   loadAreas: function(){
@@ -40,19 +66,19 @@ var Templates = {
                                    <img class="img-thumbnail img">
                                  </div>
                                </div>
-                               <div id="${item.id + 1}" class="col-4">
+                               <div class="col-4">
                                  <div class="img-wrapper">
-                                   <a href="#" class="img-content">${item.name}</a>
-                                   <img class="img-thumbnail img">
+                                   <a id="${item.id}" href="#" class="img-content">${item.name}</a>
+                                   <img class="img-thumbnail img" id="${item.id}">
                                  </div>
                                </div>`;
 
               $('.grid-row').append(gridElement);
             } else {
-              gridElement = `<div id="${item.id}" class="col-4">
+              gridElement = `<div class="col-4">
                                <div class="img-wrapper">
-                                 <a href="#" class="img-content">${item.name}</a>
-                                 <img class="img-thumbnail img">
+                                 <a id="${item.id}" href="#" class="img-content">${item.name}</a>
+                                 <img class="img-thumbnail img" id="${item.id}">
                                </div>
                              </div>`;
 
@@ -66,3 +92,5 @@ var Templates = {
 };
 
 module.exports = Templates;
+
+
