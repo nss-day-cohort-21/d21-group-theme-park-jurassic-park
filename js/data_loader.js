@@ -19,11 +19,16 @@ var Park = {
       $.ajax({
         url: 'https://android-chat-app-c66de.firebaseio.com/attractions.json'
       }).done(function(data) {
+<<<<<<< HEAD
         let attractionArr = [];
         let timeArr = Park.createTimeAttractionsList(data);
         let mapArr = Park.createAttractionsList(data);
         attractionArr.push(mapArr, timeArr);
         resolve(attractionArr);
+=======
+        // let mapArr = Park.createAttractionsList(data);
+        resolve(data);
+>>>>>>> master
       });
     });
   },
