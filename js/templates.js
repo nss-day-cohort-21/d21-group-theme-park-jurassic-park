@@ -13,9 +13,6 @@ var Templates = {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
           <input id="user-input" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
           <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
 
 
@@ -34,28 +31,36 @@ var Templates = {
 
   loadAreas: function(){
     Park.areasCall().then(function(data){
-      console.log(data);
-      $('#main-content').append(
-        `<div class=row>
-          <div class=col-4>
-          </div>
-          <div class=col-8>
-            <div class=row>
-            </div>
-          </div>
-        </div>`);
+        _.forEach(data, function(item, index) {
+            let gridElement = '';
+            if (item.id === 5 || item.id===7) {
+              gridElement = `<div id="" class="col-4">
+                                 <div class="img-wrapper">
+                                   <a href="#" class="img-content"></a>
+                                   <img class="img-thumbnail img">
+                                 </div>
+                               </div>
+                               <div id="${item.id + 1}" class="col-4">
+                                 <div class="img-wrapper">
+                                   <a href="#" class="img-content">${item.name}</a>
+                                   <img class="img-thumbnail img">
+                                 </div>
+                               </div>`;
 
-        $(data).each((index, item) =>{
-          $('.col-8 > .row').append(
-            `<div class="col-4 border rounded" id=gridArea${index} style="background-color:#${item.colorTheme};height:250px">
-            <h2>${item.name}</h2>
-            </div>`
-          );
-          // $(`#gridArea${index}`).attr("style", `background-color:#${item.colorTheme}`);
-        });
+              $('.grid-row').append(gridElement);
+            } else {
+              gridElement = `<div id="${item.id}" class="col-4">
+                               <div class="img-wrapper">
+                                 <a href="#" class="img-content">${item.name}</a>
+                                 <img class="img-thumbnail img">
+                               </div>
+                             </div>`;
 
+              $('.grid-row').append(gridElement);
+            }
+          });
 
-    });
+            });
   }
 
 };
