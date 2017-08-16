@@ -51,14 +51,14 @@ var Templates = {
       _.forEach(data, function(item, index) {
         let gridElement = '';
         if (item.id === 5 || item.id === 7) {
-          gridElement = `<div id="" class="col-4">
+          gridElement = `<div class="col-4">
                                  <div class="img-wrapper">
                                    <a href="#" class="img-content"></a>
                                    <img class="img-thumbnail img">
                                  </div>
                                </div>
                                <div id="${item.id}" class="col-4">
-                                 <div class="img-wrapper">
+                                 <div id="${item.id}" class="img-wrapper">
                                    <a id="${item.id}" href="#" class="img-content">${item.name}</a>
                                    <img class="img-thumbnail img" id="${item.id}">
                                  </div>
@@ -67,7 +67,7 @@ var Templates = {
           $('.grid-row').append(gridElement);
         } else {
           gridElement = `<div class="col-4">
-                               <div class="img-wrapper">
+                               <div id="${item.id}" class="img-wrapper">
                                  <a id="${item.id}" href="#" class="img-content">${item.name}</a>
                                  <img class="img-thumbnail img" id="${item.id}">
                                </div>
