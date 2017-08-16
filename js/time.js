@@ -71,7 +71,7 @@ var Time = {
               // CALL THE WRITE T0 SIDEBAR FUNCTION
               // *************************************
               let accordion = `<li class="list-group-item"><a href="${item.id}">${item.name}</a><br><p>Open in: ${theseMinutes - currentTotalMinutes} minutes</p></li>`
-              $('.list-group-attractions').prepend(accordion);
+              $('#searchResults').prepend(accordion);
             }
           }
         } else {
@@ -79,7 +79,7 @@ var Time = {
           // CALL THE WRITE T0 SIDEBAR FUNCTION
           // *************************************
           let accordion = `<li class="list-group-item"><a href="${item.id}">${item.name}</a><br><p>Open All Day</p></li>`
-          $('.list-group-attractions').prepend(accordion);
+          $('#searchResults').prepend(accordion);
         }
       })
     });
