@@ -70,16 +70,26 @@ var Time = {
               // *************************************
               // CALL THE WRITE T0 SIDEBAR FUNCTION
               // *************************************
-              let accordion = `<li class="list-group-item"><a href="${item.id}">${item.name}</a><br><p>Open in: ${theseMinutes - currentTotalMinutes} minutes</p></li>`
-              $('#searchResults').prepend(accordion);
+              let accordion = `<div class="item">
+                               <a data-toggle="collapse" data-parent="#accordion-wrapper" href="#${item.id}" aria-expanded="true" aria-controls="${item.id}">${item.name}</a>
+                               <div id="${item.id}" class="collapse" role="tabpanel">
+                                 <p class="mb-3">${item.description}</p>
+                               </div>
+                           </div>`;
+              $('#accordion-wrapper').append(accordion);
             }
           }
         } else {
           // *************************************
           // CALL THE WRITE T0 SIDEBAR FUNCTION
           // *************************************
-          let accordion = `<li class="list-group-item"><a href="${item.id}">${item.name}</a><br><p>Open All Day</p></li>`
-          $('#searchResults').prepend(accordion);
+          let accordion = `<div class="item">
+                           <a data-toggle="collapse" data-parent="#accordion-wrapper" href="#${item.id}" aria-expanded="true" aria-controls="${item.id}">${item.name}</a>
+                           <div id="${item.id}" class="collapse" role="tabpanel">
+                             <p class="mb-3">${item.description}</p>
+                           </div>
+                       </div>`;
+          $('#accordion-wrapper').append(accordion);
         }
       })
     });
