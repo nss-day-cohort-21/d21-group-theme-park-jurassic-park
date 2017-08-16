@@ -7,18 +7,8 @@
  }
 }
 
-.footer {
-  background: black;
-  width: 100%;
-  text-align: center;
-  position: fixed;
-  bottom: 0px;
-}
 
-.footer span {
-  color: yellow;
-}
-
+/*OTHER*/
 #demo {
   color: red;
 }
@@ -26,6 +16,12 @@
 .btn-warning {
   background-color: yellow !important;
 }
+
+#searchResults a{
+    color: red;
+}
+
+/*********IMAGE SETTINGS**********/
 .img-thumbnail {
   padding: 0;
   border: 0;
@@ -34,12 +30,18 @@
     z-index: -1;
 }
 
+.bkimg{
+    background-image: url("../../images/jf.jpg");
+    background-size: cover;
+}
+
 .img {
   background-image: url("../../images/map6.jpg");
   background-size: 100% 100%;
   background-attachment: fixed;
   width: 100%;
   height: 10rem;
+    opacity: .85;
 }
 
 .col-4 {
@@ -65,3 +67,16 @@ a.img-content:hover {
   transition: all 0.75s ease-in-out;
   -webkit-transition: all 0.75 ease-in-out; }
 
+
+/*********FOOTER**************/
+.footer {
+  background: black;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0px;
+}
+
+.footer span {
+  color: yellow;
+}
