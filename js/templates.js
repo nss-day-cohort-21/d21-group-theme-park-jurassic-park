@@ -22,11 +22,29 @@ var Templates = {
   },
 
     // TODO: highlight border of grid instead of write names to DOM.
-  loadAttractionsToDOM: function(data){
+  loadAttractionsToDomOnSearch: function(data){
     $('.attractions-list').html('')
     _.forEach(data, function(item) {
+
+        
       $('.attractions-list').append(`<a href="#">${item.name}</a><br>`)
     });
+  },
+
+  loadAttractionsByArea: function(attractionCall,id) {
+    let accordion = "";
+
+      
+      attractionCall(id)
+        .then(function (data) {
+          $('.list-group-attractions').html("");
+          _.forEach(data, function(item) {
+            accordion = `<li class="list-group-item"><a href="${item.id}">${item.name}</a></li>`
+            $('.list-group-attractions').append(accordion);
+          });
+            
+
+        });
   },
 
   loadAreas: function(){
@@ -42,17 +60,17 @@ var Templates = {
                                </div>
                                <div id="${item.id}" class="col-4">
                                  <div class="img-wrapper">
-                                   <a href="#" class="img-content">${item.name}</a>
-                                   <img class="img-thumbnail img">
+                                   <a id="${item.id}" href="#" class="img-content">${item.name}</a>
+                                   <img class="img-thumbnail img" id="${item.id}">
                                  </div>
                                </div>`;
 
               $('.grid-row').append(gridElement);
             } else {
-              gridElement = `<div id="${item.id}" class="col-4">
+              gridElement = `<div class="col-4">
                                <div class="img-wrapper">
-                                 <a href="#" class="img-content">${item.name}</a>
-                                 <img class="img-thumbnail img">
+                                 <a id="${item.id}" href="#" class="img-content">${item.name}</a>
+                                 <img class="img-thumbnail img" id="${item.id}">
                                </div>
                              </div>`;
 
@@ -65,3 +83,5 @@ var Templates = {
 };
 
 module.exports = Templates;
+
+
