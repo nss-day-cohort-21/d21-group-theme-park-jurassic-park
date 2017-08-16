@@ -25,30 +25,22 @@ var Templates = {
   loadAttractionsToDomOnSearch: function(data){
     $('.attractions-list').html('')
     _.forEach(data, function(item) {
-      console.log("data form loadattractions", data);
+
         
       $('.attractions-list').append(`<a href="#">${item.name}</a><br>`)
     });
   },
 
-  loadAttractionsByArea: function(attractionCall) {
+  loadAttractionsByArea: function(attractionCall,id) {
     let accordion = "";
-      attractionCall()
+
+      
+      attractionCall(id)
         .then(function (data) {
+          $('.list-group-attractions').html("");
           _.forEach(data, function(item) {
-            accordion = `
-               <div class="item">
-                <a data-toggle="collapse" data-parent="#attraction-accordion" href="#${item.id}" aria-expanded="false" aria-controls="${item.id}">
-                  ${item.name}
-                </a>
-                <div id="${item.id}" class="collapse show" role="tabpanel">
-                  <p class="mb-3">
-                    ${item.description}
-                  </p>
-                </div>
-              </div>
-            `
-            $('#attraction-accordion').append(accordion);
+            accordion = `<li class="list-group-item"><a href="${item.id}">${item.name}</a></li>`
+            $('.list-group-attractions').append(accordion);
           });
             
 

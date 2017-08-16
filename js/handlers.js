@@ -12,7 +12,7 @@ var Handlers = {
 
         dataLoader.attractionByNameCall(capitalizedWord)
           .then(function(data){
-            console.log('Data: ', data);
+
             templates.loadAttractionsToDomOnSearch(data);
           });
       }
@@ -22,10 +22,13 @@ var Handlers = {
 
 
     $(".grid-row").click(function(event){
-      console.log("event id: ", event.target.id, "eventwrapper:", event.target);
 
-      dataLoader.attractionsCall("area_id", event.target.id);
-      https://android-chat-app-c66de.firebaseio.com/attractions/.json?orderBy="area_id"&equalTo=1
+
+      templates.loadAttractionsByArea(dataLoader.attractionsCallByAreaId, event.target.id);
+
+        
+
+      // https://android-chat-app-c66de.firebaseio.com/attractions/.json?orderBy="area_id"&equalTo=1
     })
   }
 
@@ -35,4 +38,5 @@ var Handlers = {
 };
 
 Handlers.loadAttractionsOnEnterKey();
+Handlers.loadAttractionsOnClickArea();
 Handlers.loadAttractionsOnClickArea();

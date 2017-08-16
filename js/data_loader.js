@@ -8,22 +8,21 @@ var Park = {
       $.ajax({
         url: 'https://android-chat-app-c66de.firebaseio.com/areas.json'
       }).done(function(data) {
-      	console.log("data in areas", data);
         resolve(data);
       });
     });
   },
 
-  // attractionsCall: function() {
-  //   return new Promise(function(resolve, reject) {
-  //     $.ajax({
-  //       url: 'https://android-chat-app-c66de.firebaseio.com/attractions.json'
-  //     }).done(function(data) {
-  //       // let mapArr = Park.createAttractionsList(data);
-  //       resolve(data);
-  //     });
-  //   });
-  // },
+  attractionsCall: function() {
+    return new Promise(function(resolve, reject) {
+      $.ajax({
+        url: 'https://android-chat-app-c66de.firebaseio.com/attractions.json'
+      }).done(function(data) {
+        // let mapArr = Park.createAttractionsList(data);
+        resolve(data);
+      });
+    });
+  },
 
   attractionByNameCall: function(userInput) {
   	return new Promise(function(resolve, reject){
@@ -42,12 +41,13 @@ var Park = {
     return attractionsNames;
   },
 
-  attractionsCall: function(parameter,value) {
+  attractionsCallByAreaId: function(value) {
     return new Promise(function(resolve, reject) {
       $.ajax({
-        url: `https://android-chat-app-c66de.firebaseio.com/attractions.json?orderBy="${parameter}"&equalTo="${value}"`
+        url: `https://android-chat-app-c66de.firebaseio.com/attractions.json?orderBy="area_id"&equalTo=${value}`
       }).done(function(data) {
         // let mapArr = Park.createAttractionsList(data);
+
         resolve(data);
       });
     });
