@@ -19,5 +19,5 @@ var Handlers = {
     });
   }
 };
-
 Handlers.userInputOnEnterKey();
+module.exports = Handlers;
