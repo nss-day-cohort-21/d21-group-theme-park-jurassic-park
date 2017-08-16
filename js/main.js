@@ -4,5 +4,5 @@ var time = require('./time');
 
 template.loadNavbar();
 template.loadAreas();
-time.loadTimeData();
-document.getElementById("demo").innerHTML = Date();
+time.loadOpenAttractions();
+// document.getElementById("demo").innerHTML = Date();
