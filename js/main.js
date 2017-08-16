@@ -1,7 +1,8 @@
 'use strict';
 var template = require('./templates');
+var time = require('./time');
 
 template.loadNavbar();
 template.loadAreas();
-document.getElementById("demo").innerHTML = Date();
-
+time.loadOpenAttractions();
+// document.getElementById("demo").innerHTML = Date();
