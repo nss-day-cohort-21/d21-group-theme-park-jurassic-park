@@ -19,8 +19,8 @@ var Park = {
       $.ajax({
         url: 'https://android-chat-app-c66de.firebaseio.com/attractions.json'
       }).done(function(data) {
-        let mapArr = Park.createAttractionsList(data);
-        resolve(mapArr);
+        // let mapArr = Park.createAttractionsList(data);
+        resolve(data);
       });
     });
   },
