@@ -50,7 +50,7 @@ var Park = {
     let eachAttraction = _.map(data, function(item) {
       let newObj = {};
       newObj.name = item.name;
-      newObj.time = item.times;
+      newObj.times = item.times;
       newObj.type_id = item.type_id;
       timeArr.push(newObj);
     });

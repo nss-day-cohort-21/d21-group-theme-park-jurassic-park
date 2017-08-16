@@ -40,7 +40,7 @@ var Templates = {
                                    <img class="img-thumbnail img">
                                  </div>
                                </div>
-                               <div id="${item.id + 1}" class="col-4">
+                               <div id="${item.id}" class="col-4">
                                  <div class="img-wrapper">
                                    <a href="#" class="img-content">${item.name}</a>
                                    <img class="img-thumbnail img">
