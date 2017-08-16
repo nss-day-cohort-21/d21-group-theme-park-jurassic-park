@@ -43,6 +43,6 @@ var Park = {
   }
 };
 
-Park.areasCall();
+
 
 module.exports = Park;
