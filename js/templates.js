@@ -55,7 +55,7 @@ var Templates = {
               gridElement = `<div id="" class="col-4">
                                  <div class="img-wrapper">
                                    <a href="#" class="img-content"></a>
-                                   <img class="img-thumbnail">
+                                   <img class="img-thumbnail img">
                                  </div>
                                </div>
                                <div id="${item.id}" class="col-4">
