@@ -16,20 +16,31 @@ var options = {
   ]
 };
 
+//create array of attractions objects
 Park.attractionsCall().then(function(resolve){
 	attractionsArr = resolve;
 });
 
+//on key up, search array of objects for name matches, then print
 $('#user-input').keyup(function(){
-	let searchText = $('#user-input').val();
-	let fuse = new Fuse(attractionsArr, options);
-	let result = fuse.search(searchText);
-	console.log(result);
+    let searchText = $('#user-input').val();
+    let fuse = new Fuse(attractionsArr, options);
+    let result = fuse.search(searchText);
+    let namesList = [];
+    result.forEach((item)=>{
+    	namesList.push(item.name)
+    });
+	printResults(namesList);
 });
 
-//1.  get attractions array (attractionsCall() resolve is array)
-//2. create fuse object w/ array
-//3. on key up, call fuse,search...
-//4. ... print result to sidebar
-
-
+//for each item in search results, print to DOM with link
+printResults = function (result){
+	$('#searchResults').html('');
+    let content = '';
+    result.forEach((item)=>{
+    	content += `<p><a href="#">${item}</a></p>`;
+    });
+    let newDiv = $('<div></div>');
+    newDiv.html(content);
+    $('#searchResults').append(newDiv);
+};
