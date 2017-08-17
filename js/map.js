@@ -11,22 +11,10 @@ MapGrid.appendMap = (areaId) => {
 				attractionsArr.push(item);
 			}
 		});
-		console.log("attractions arr ", attractionsArr);
 		createGrid(attractionsArr ,getDimensions(attractionsArr.length), areaId);
 	});
 
 }
-
-//1.  load attractionsArr
-
-
-//2. pass attractionsArr.length to getDimensions
-
-
-//3.  pass dimensions and area_id in data to createGrid
-
-//4.  call function chain in templates.loadAreas
-
 
 function getDimensions(num) {
 	let arr = [];
@@ -40,7 +28,6 @@ function getDimensions(num) {
 		}
 	}
 	arr.push(h,w);
-	console.log("dimensions arr", arr);
 	return arr;
 }
 
@@ -50,7 +37,8 @@ function createGrid(attractionsArr, dimensionsArr, appendId) {
 	for(let i = 1; i <= dimensionsArr[0]; i++) {
 		let $row = $('<div></div>').addClass('map-row');
 		for(let j = 1; j <= dimensionsArr[1]; j++) {
-			let $col = $('<div> </div>').addClass('map-col', attractionsArr[count].id);
+			let $col = $('<div> </div>').addClass('map-col');
+			$col.addClass('col-' + attractionsArr[count].id);
 			$row.append($col);
 			count++;
 		}
@@ -58,5 +46,63 @@ function createGrid(attractionsArr, dimensionsArr, appendId) {
 	}
 	$('#' + appendId).append($map);
 };
+
+window.addEventListener('click', function(e) {
+	let img = document.createElement('img');
+	img.setAttribute('src', 'images/pin.svg');
+	img.classList.add('pin')
+	img.style = '';
+	if(e.target.hasAttribute('aria-controls')){
+		let colId = e.target.getAttribute('aria-controls');
+		let div = document.querySelector('.col-' + colId);
+		console.log("div", div, "img", img);
+		div.appendChild(img);
+	}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = MapGrid;

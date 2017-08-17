@@ -133,10 +133,10 @@ a.img-content:hover {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 0;
   height: 10rem;
   width: 100%;
-  border: 2px solid green;
+  // border: 2px solid green;
   color: white;
   display: flex;
   flex-direction: column;
@@ -146,6 +146,11 @@ a.img-content:hover {
 .map-row {
   display: flex;
   justify-content: space-around;
+}
+
+.pin {
+  width: 100px;
+  z-index: 100;
 }
 
 /*********FOOTER**************/
@@ -175,3 +180,4 @@ a.img-content:hover {
 #demo {
   color: red;
 }
+
