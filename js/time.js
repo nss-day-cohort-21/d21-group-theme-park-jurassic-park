@@ -87,8 +87,6 @@ var Time = {
 
   addTypes: function(nowEvents){
     Park.attractionsTypeCall().then(function(data) {
-      // console.log("data" ,data);
-      console.log($(nowEvents));
       $(nowEvents).each((index, item) => {
         $(data).each((dataIndex, dataItem) => {
           if (Number($(item).attr("typeid")) === dataItem.id) {
