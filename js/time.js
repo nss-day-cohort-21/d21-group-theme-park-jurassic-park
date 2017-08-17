@@ -1,12 +1,13 @@
 'use strict';
 
 let Park = require('./data_loader');
+let Templates = require('./templates');
 
 let currentTime = new Date();
 let hours = currentTime.getHours();
 let minutes = currentTime.getMinutes();
 let currentTotalMinutes = (hours*60) + minutes;
-
+let currentEvents;
 
 var Time = {
   loadOpenAttractions: function(){
@@ -64,14 +65,13 @@ var Time = {
 
             theseMinutes = afternoonMinutes + morningMinutes;
 
-            if (theseMinutes - currentTotalMinutes <= 60 && theseMinutes - currentTotalMinutes >= 0) {
-              console.log(theseMinutes - currentTotalMinutes);
-              console.log(item);
+            if (theseMinutes - currentTotalMinutes <= 60 && theseMinutes - currentTotalMinutes > 0) {
               // *************************************
               // CALL THE WRITE T0 SIDEBAR FUNCTION
               // *************************************
-              let accordion = `<div class="item">
+              let accordion = `<div class="item" typeId=${item.type_id}>
                                <a data-toggle="collapse" data-parent="#accordion-wrapper" href="#${item.id}" aria-expanded="true" aria-controls="${item.id}">${item.name}</a>
+                               <p>Starts in: ${theseMinutes - currentTotalMinutes} minutes</p>
                                <div id="${item.id}" class="collapse" role="tabpanel">
                                  <p class="mb-3">${item.description}</p>
                                </div>
@@ -79,20 +79,25 @@ var Time = {
               $('#accordion-wrapper').append(accordion);
             }
           }
-        } else {
-          // *************************************
-          // CALL THE WRITE T0 SIDEBAR FUNCTION
-          // *************************************
-          let accordion = `<div class="item">
-                           <a data-toggle="collapse" data-parent="#accordion-wrapper" href="#${item.id}" aria-expanded="true" aria-controls="${item.id}">${item.name}</a>
-                           <div id="${item.id}" class="collapse" role="tabpanel">
-                             <p class="mb-3">${item.description}</p>
-                           </div>
-                       </div>`;
-          $('#accordion-wrapper').append(accordion);
         }
       })
-    });
+      currentEvents = $('.item');
+      Time.addTypes(currentEvents);
+    })
+  },
+
+  addTypes: function(nowEvents){
+    Park.attractionsTypeCall().then(function(data) {
+      // console.log("data" ,data);
+      console.log($(nowEvents));
+      $(nowEvents).each((index, item) => {
+        $(data).each((dataIndex, dataItem) => {
+          if (Number($(item).attr("typeid")) === dataItem.id) {
+            $(item).children("p").append(` | ${dataItem.name}`);
+          }
+        });
+      });
+    })
   }
 };
 

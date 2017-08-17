@@ -26,11 +26,8 @@ var Handlers = {
 
     })
   }
-
-
 };
 
 Handlers.loadAttractionsOnEnterKey();
 Handlers.loadAttractionsOnClickArea();
 module.exports = Handlers;
-
