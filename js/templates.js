@@ -1,6 +1,6 @@
 'use strict';
 
-var Park = require('./data_loader');
+let Park = require('./data_loader');
 
 var Templates = {
   loadNavbar: function() {

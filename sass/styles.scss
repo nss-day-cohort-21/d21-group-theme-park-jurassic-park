@@ -1,5 +1,10 @@
 /* Center search input in navbar
 ====================================*/
+
+body{
+    background-color: black;
+}
+
 .navbar-collapse {
   justify-content: center;
   input {
@@ -11,18 +16,8 @@
   background-color: #111 !important;
 }
 
-.footer {
-  background: black;
-  width: 100%;
-  text-align: center;
-  position: fixed;
-  bottom: 0px;
-}
 
-.footer span {
-  color: yellow;
-}
-
+/*OTHER*/
 #demo {
   color: red;
 }
@@ -30,6 +25,12 @@
 .btn-warning {
   background-color: yellow !important;
 }
+
+#searchResults a{
+    color: red;
+}
+
+/*********IMAGE SETTINGS**********/
 .img-thumbnail {
   padding: 0;
   border: 0;
@@ -38,12 +39,19 @@
   z-index: -1;
 }
 
+.bkimg{
+    background-image: url("../../images/jf.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .img {
   background-image: url("../../images/map6.jpg");
   background-size: 100% 100%;
   background-attachment: fixed;
   width: 100%;
   height: 10rem;
+    opacity: .85;
 }
 
 .col-4 {
@@ -80,8 +88,27 @@ a.img-content:hover {
   padding-right: 1rem;
 }
 
+
 @media screen and (max-width: 980px) {
   html {
     font-size: 2.1rem;
   }
+}
+
+#searchResults {
+  max-height: 500px !important;
+  overflow-y: auto;
+}
+
+/*********FOOTER**************/
+.footer {
+  background: black;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0px;
+}
+
+.footer span {
+  color: yellow;
 }
