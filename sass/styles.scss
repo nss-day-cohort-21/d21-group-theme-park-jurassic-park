@@ -1,3 +1,4 @@
+CSS
 /* Center search input in navbar
 ====================================*/
 
@@ -16,10 +17,20 @@ body{
   background-color: #111 !important;
 }
 
+/*******SEARCH RESULTS CSS**********/
+.item{
+    transition-duration: .7s;
+    transition-timing-function: linear;
+}
+
+.item:hover {
+    font-size: 1.1em;
+}
+
 
 /*OTHER*/
-#demo {
-  color: red;
+p{
+  color: yellow;
 }
 
 .btn-warning {
@@ -93,6 +104,9 @@ a.img-content:hover {
   html {
     font-size: 2.1rem;
   }
+    .footer{
+        font-size: .5em;
+    }
 }
 
 #searchResults {
@@ -107,8 +121,13 @@ a.img-content:hover {
   text-align: center;
   position: fixed;
   bottom: 0px;
+    color: red;
 }
 
-.footer span {
+.footer p span {
+    width: 50%;
+}
+
+#demo {
   color: yellow;
 }
