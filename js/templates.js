@@ -106,7 +106,7 @@ var Templates = {
 
           $('.grid-row').append(gridElement);
         }
-        MapGrid.appendMap(item.id);  //create map grid here
+      MapGrid.appendMap(item.id);  //create map grid here
       });
     });
   }

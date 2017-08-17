@@ -48,6 +48,7 @@ function createGrid(attractionsArr, dimensionsArr, appendId) {
 };
 
 window.addEventListener('click', function(e) {
+	$('.map-col').html('');
 	let img = document.createElement('img');
 	img.setAttribute('src', 'images/pin.svg');
 	img.classList.add('pin');
