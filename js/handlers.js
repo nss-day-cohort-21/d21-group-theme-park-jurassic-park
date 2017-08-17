@@ -2,7 +2,6 @@
 
 let dataLoader = require('./data_loader');
 let templates = require('./templates.js');
-var _ = require('../lib/node_modules/lodash/lodash.min');
 
 var Handlers = {
   loadAttractionsOnEnterKey: function() {
@@ -35,14 +34,6 @@ var Handlers = {
       attributeCall().then(function(data) {
         let color = data[id - 1].colorTheme;
         $(imageElement).attr('style', `border: 3px solid #${color}`);
-      });
-    });
-  },
-
-  addTimeFrame: function(attractionCall) {
-    attractionCall().then(function(data) {
-      _.forEach(data, function(item) {
-        console.log('Data: ', item, item.times);
       });
     });
   },
