@@ -10,6 +10,7 @@ let currentTotalMinutes = (hours*60) + minutes;
 
 var Time = {
   loadOpenAttractions: function(){
+    $('#accordion-wrapper').html('');
     Park.attractionsCall().then(function(data) {
 
       $(data).each((index, item)=>{
