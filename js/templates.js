@@ -10,13 +10,11 @@ var Templates = {
   loadNavbar: function() {
     $('body').before(`
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#"><img src="images/Jurassic_Park_logo.jpg" style="width:90px;height:60px;display:inline-block"></a>
+    <a class="navbar-brand JPL" href="#"><img src="images/Jurassic_Park_logo.jpg" style="width:90px;height:60px;display:inline-block"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <input id="user-input" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
       <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
@@ -27,6 +25,8 @@ var Templates = {
         <a id="attraction-time" class="dropdown-item" href="#">Attraction Time</a>
       </div>
     </li>
+        <input id="user-input" class="form-control mr-sm-2" type="text" placeholder="DinoSearch" aria-label="Search">
+        
       </div>
     </div>
   </nav>
@@ -52,8 +52,13 @@ var Templates = {
     let accordion = '';
 
     attractionCall(id).then(function(data) {
+      console.log(data);
       $('#accordion-wrapper').html('');
       $('#accordion-wrapper').append(HbsTemplate(data));
+
+      let currentEvents = $('.item');
+      Time.addTypes(currentEvents);
+
       $("a.attractionNameLink").on("click", (e) => {
       let gridRow = $('.img-wrapper').find("img");
       $(gridRow).removeAttr('style');
@@ -68,8 +73,10 @@ var Templates = {
               let correctPTag = $(e.target).siblings("div").children(".areaNameDropDown").html(areaNamesss+`<br>`);
               let ariaControls = $(e.target).attr("aria-controls");
               let thisTimes = data[ariaControls-1].times;
-              thisTimes = thisTimes.toString().replace(/\M/g, "M ");
-              $(e.target).siblings("div").children(".areaNameDropDown").append(thisTimes);
+              if (thisTimes !== undefined) {
+                thisTimes = thisTimes.toString().replace(/\M/g, "M ");
+                $(e.target).siblings("div").children(".areaNameDropDown").append(thisTimes);
+              }
             }
           });
         });
