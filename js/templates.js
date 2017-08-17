@@ -77,8 +77,9 @@ var Templates = {
 
           $('.grid-row').append(gridElement);
         }
+        console.log("areas loaded");
+        MapGrid.appendMap(item.id);//create map grid here
       });
-      MapGrid.getAreaIds(data);  //testing
     });
   }
 };
