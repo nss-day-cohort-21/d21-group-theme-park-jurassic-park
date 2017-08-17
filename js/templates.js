@@ -54,6 +54,10 @@ var Templates = {
       console.log(data);
       $('#accordion-wrapper').html('');
       $('#accordion-wrapper').append(HbsTemplate(data));
+
+      let currentEvents = $('.item');
+      Time.addTypes(currentEvents);
+
       $("a.attractionNameLink").on("click", (e) => {
       let gridRow = $('.img-wrapper').find("img");
       $(gridRow).removeAttr('style');
