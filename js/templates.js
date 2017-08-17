@@ -51,6 +51,7 @@ var Templates = {
     let accordion = '';
 
     attractionCall(id).then(function(data) {
+      console.log(data);
       $('#accordion-wrapper').html('');
       $('#accordion-wrapper').append(HbsTemplate(data));
       $("a.attractionNameLink").on("click", (e) => {
@@ -67,8 +68,10 @@ var Templates = {
               let correctPTag = $(e.target).siblings("div").children(".areaNameDropDown").html(areaNamesss+`<br>`);
               let ariaControls = $(e.target).attr("aria-controls");
               let thisTimes = data[ariaControls-1].times;
-              thisTimes = thisTimes.toString().replace(/\M/g, "M ");
-              $(e.target).siblings("div").children(".areaNameDropDown").append(thisTimes);
+              if (thisTimes !== undefined) {
+                thisTimes = thisTimes.toString().replace(/\M/g, "M ");
+                $(e.target).siblings("div").children(".areaNameDropDown").append(thisTimes);
+              }
             }
           });
         });

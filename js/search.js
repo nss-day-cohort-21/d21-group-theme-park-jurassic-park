@@ -50,21 +50,28 @@ $('.dropdown-menu').click(function(event) {
 
 //for each item in search results, print to DOM with link
 printResults = function(data) {
+  console.log(data);
   $('#accordion-wrapper').html('');
   $('#accordion-wrapper').append(HbsTemplate(data));
   $("a.attractionNameLink").on("click", (e) => {
   let gridRow = $('.img-wrapper').find("img");
   $(gridRow).removeAttr('style');
     let accordionid = $(e.target).parent().attr("areaid");
-     Park.areasCall().then(function(data) {
-      let color = data[accordionid - 1].colorTheme;
+     Park.areasCall().then(function(dataArea) {
+      let color = dataArea[accordionid - 1].colorTheme;
       let imgwrap = $(".img-wrapper");
       imgwrap.each((index,item)=>{
-        if(Number(item.id)===data[accordionid - 1].id){
+        if(Number(item.id)===dataArea[accordionid - 1].id){
+          console.log("item", item);
           $(item).find('img').attr('style', `border: 3px solid #${color}`);
           let areaNamesss = $(item).children("a").html();
-          let correctPTag = $(e.target).siblings("div").children(".areaNameDropDown").html(areaNamesss);
-          
+          let correctPTag = $(e.target).siblings("div").children(".areaNameDropDown").html(areaNamesss + `<br>`);
+          let ariaControls = $(e.target).attr("aria-controls");
+          let thisTimes = data[index].times;
+          if (thisTimes !== undefined) {
+            thisTimes = thisTimes.toString().replace(/\M/g, "M ");
+            $(e.target).siblings("div").children(".areaNameDropDown").append(thisTimes);
+          }
         }
       });
     });
