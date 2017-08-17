@@ -50,7 +50,7 @@ function createGrid(attractionsArr, dimensionsArr, appendId) {
 	for(let i = 1; i <= dimensionsArr[0]; i++) {
 		let $row = $('<div></div>').addClass('map-row');
 		for(let j = 1; j <= dimensionsArr[1]; j++) {
-			let $col = $('<div>#</div>').addClass('map-col', attractionsArr[count].id);
+			let $col = $('<div> </div>').addClass('map-col', attractionsArr[count].id);
 			$row.append($col);
 			count++;
 		}
@@ -60,37 +60,3 @@ function createGrid(attractionsArr, dimensionsArr, appendId) {
 };
 
 module.exports = MapGrid;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
