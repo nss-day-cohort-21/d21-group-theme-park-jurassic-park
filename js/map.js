@@ -55,6 +55,7 @@ window.addEventListener('click', function(e) {
 	if(e.target.hasAttribute('aria-controls')){
 		let colId = e.target.getAttribute('aria-controls');
 		let div = document.querySelector('.col-' + colId);
+		div.classList.add('forward');
 		console.log("div", div, "img", img);
 		div.appendChild(img);
 	}

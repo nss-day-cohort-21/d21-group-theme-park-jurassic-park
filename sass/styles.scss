@@ -136,7 +136,6 @@ a.img-content:hover {
   z-index: -10;
   height: 10rem;
   width: 100%;
-  // border: 2px solid green;
   color: white;
   display: flex;
   flex-direction: column;
@@ -152,6 +151,9 @@ a.img-content:hover {
   width: 100px;
 }
 
+.forward {
+  border: 1px solid green;
+}
 
 /*********FOOTER**************/
 .footer {
