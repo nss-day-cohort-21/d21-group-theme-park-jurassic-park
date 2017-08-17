@@ -67,6 +67,10 @@ a.img-content:hover {
   transition: all 0.75s ease-in-out;
   -webkit-transition: all 0.75 ease-in-out; }
 
+#searchResults {
+  max-height: 500px !important;
+  overflow-y: auto;
+}
 
 /*********FOOTER**************/
 .footer {

@@ -52,6 +52,17 @@ var Park = {
     });
   },
 
+  attractionsTypeCall: function(value) {
+    return new Promise(function(resolve, reject) {
+      $.ajax({
+        url: `https://android-chat-app-c66de.firebaseio.com/attraction_types.json`
+      }).done(function(data) {
+        // let mapArr = Park.createAttractionsList(data);
+        resolve(data);
+      });
+    });
+  }
+
 };
 
 
