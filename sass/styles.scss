@@ -1,5 +1,10 @@
 /* Center sear input in navbar
 ====================================*/
+
+body{
+    background-color: black;
+}
+
 .navbar-collapse {
  justify-content: center;
  input {
@@ -33,6 +38,7 @@
 .bkimg{
     background-image: url("../../images/jf.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .img {
