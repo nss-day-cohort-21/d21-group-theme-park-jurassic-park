@@ -63,7 +63,6 @@ var Templates = {
                               <img class="img-thumbnail img" id="${item.id}">
                             </div>
                           </div>`;
-
           $('.grid-row').append(gridElement);
         } else {
           gridElement = `<div class="col-4">
