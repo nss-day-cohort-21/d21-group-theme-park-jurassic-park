@@ -9,28 +9,28 @@ let MapGrid = require('./map.js');
 var Templates = {
   loadNavbar: function() {
     $('body').before(`
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#"><img src="images/Jurassic_Park_logo.jpg" style="width:90px;height:60px;display:inline-block"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <input id="user-input" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><img src="images/Jurassic_Park_logo.jpg" style="width:90px;height:60px;display:inline-block"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <input id="user-input" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-          Select Search Type:
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a id="attraction-name" class="dropdown-item" href="#">Attraction Name</a>
-          <a id="attraction-time" class="dropdown-item" href="#">Attraction Time</a>
-        </div>
-      </li>
-        </div>
+        Select Search Type:
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a id="attraction-name" class="dropdown-item" href="#">Attraction Name</a>
+        <a id="attraction-time" class="dropdown-item" href="#">Attraction Time</a>
       </div>
-    </nav>
-    `);
+    </li>
+      </div>
+    </div>
+  </nav>
+  `);
   },
 
   // TODO: highlight border of grid instead of write names to DOM.
@@ -54,7 +54,26 @@ var Templates = {
     attractionCall(id).then(function(data) {
       $('#accordion-wrapper').html('');
       $('#accordion-wrapper').append(HbsTemplate(data));
-
+      $("a.attractionNameLink").on("click", (e) => {
+      let gridRow = $('.img-wrapper').find("img");
+      $(gridRow).removeAttr('style');
+        let accordionid = $(e.target).parent().attr("areaid");
+         Park.areasCall().then(function(dataArea) {
+          let color = dataArea[accordionid - 1].colorTheme;
+          let imgwrap = $(".img-wrapper");
+          imgwrap.each((index,item)=>{
+            if(Number(item.id)===dataArea[accordionid - 1].id){
+              $(item).find('img').attr('style', `border: 3px solid #${color}`);
+              let areaNamesss = $(item).children("a").html();
+              let correctPTag = $(e.target).siblings("div").children(".areaNameDropDown").html(areaNamesss+`<br>`);
+              let ariaControls = $(e.target).attr("aria-controls");
+              let thisTimes = data[ariaControls-1].times;
+              thisTimes = thisTimes.toString().replace(/\M/g, "M ");
+              $(e.target).siblings("div").children(".areaNameDropDown").append(thisTimes);
+            }
+          });
+        });
+      })
     });
 
   },
@@ -91,7 +110,7 @@ var Templates = {
         MapGrid.appendMap(item.id);//create map grid here
       });
     });
-  },
+  }
 };
 
 module.exports = Templates;
