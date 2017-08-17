@@ -50,8 +50,7 @@ function createGrid(attractionsArr, dimensionsArr, appendId) {
 window.addEventListener('click', function(e) {
 	let img = document.createElement('img');
 	img.setAttribute('src', 'images/pin.svg');
-	img.classList.add('pin')
-	img.style = '';
+	img.classList.add('pin');
 	if(e.target.hasAttribute('aria-controls')){
 		let colId = e.target.getAttribute('aria-controls');
 		let div = document.querySelector('.col-' + colId);
