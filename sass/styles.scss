@@ -29,7 +29,7 @@ body{
 }
 
 #searchResults {
-    background-color: rgba(250,200,150,0.5);
+    background-color: rgba(250,200,150,0.3);
 }
 
 #searchResults a{
@@ -37,13 +37,22 @@ body{
     font-family: 'Slabo 27px', serif;
 }
 
+.navbar {
+  margin:0; 
+  padding:0;
+}
+
 /*OTHER*/
 p{
-  color: yellow;
+  color: white;
 }
 
 .btn-warning {
-  background-color: yellow !important;
+  background-color: brown !important;
+}
+.navbar-brand{
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -68,7 +77,6 @@ p{
   background-attachment: fixed;
   width: 100%;
   height: 10rem;
-    opacity: .85;
 }
 
 .col-4 {
@@ -129,7 +137,7 @@ a.img-content:hover {
 
 /*********FOOTER**************/
 .footer {
-  background: black;
+  background-color:rgba(400,250,400,0.3);
   width: 100%;
   text-align: center;
   position: fixed;
@@ -145,12 +153,38 @@ a.img-content:hover {
     padding: 0;
 }
 .footer p{
-    font-size: 1.5em;
+    font-size: 1.7em;
     font-family: 'Cinzel', serif;
+    color: black;
     margin: 0;
     padding: 0;
 }
 
 #demo {
-  color: red;
+  color: maroon;
+  padding-right: 15px;
 }
+
+.open-cages{
+  color: black;
+  background-image: url(../../images/eye.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 100px;
+  border: none;
+  opacity: .2;
+}
+.open-cages span {
+  display: none;
+}
+
+.open-cages:hover{
+  opacity: 1;
+}
+
+
+
+
+
+

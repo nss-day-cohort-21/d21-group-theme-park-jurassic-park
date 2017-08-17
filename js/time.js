@@ -70,7 +70,7 @@ var Time = {
               // *************************************
               let accordion = `<div class="item" typeId=${item.type_id} areaId=${item.area_id}>
                                <a data-toggle="collapse" data-parent="#accordion-wrapper" href="#${item.id}" aria-expanded="true" aria-controls="${item.id}">${item.name}</a>
-                               <p style="color:white">Starts in: ${theseMinutes - currentTotalMinutes} minutes</p>
+                               <p style="color:black">Starts in: ${theseMinutes - currentTotalMinutes} minutes</p>
                                <div id="${item.id}" class="collapse" role="tabpanel">
                                  <p class="mb-3">${item.description}</p>
                                </div>
