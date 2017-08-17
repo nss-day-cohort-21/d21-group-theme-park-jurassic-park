@@ -17,6 +17,23 @@ body{
   background-color: #111 !important;
 }
 
+#navbarSupportedContent{
+  padding-left:0;
+  margin-left: 0;
+}
+
+#navbarDropdownMenuLink{
+  padding-right: 0;
+  margin-left: 15%;
+}
+
+.nav-link{
+  color: maroon;
+}
+.nav-link:hover{
+  color: goldenrod;
+}
+
 /*******SEARCH RESULTS CSS**********/
 .item{
     transition-duration: .7s;
@@ -29,7 +46,7 @@ body{
 }
 
 #searchResults {
-    background-color: rgba(250,200,150,0.3);
+    background-color: rgba(270,150,150,0.3);
 }
 
 #searchResults a{
@@ -77,6 +94,7 @@ p{
   background-attachment: fixed;
   width: 100%;
   height: 10rem;
+  opacity: 1;
 }
 
 .col-4 {
@@ -90,7 +108,7 @@ p{
 }
 
 .img-wrapper:hover {
-    box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 25px #000000;
 }
 
 /* Map links and transition on hover
@@ -137,7 +155,7 @@ a.img-content:hover {
 
 /*********FOOTER**************/
 .footer {
-  background-color:rgba(400,250,400,0.3);
+  background-color:rgba(200,50,50,0.8);
   width: 100%;
   text-align: center;
   position: fixed;
@@ -161,29 +179,17 @@ a.img-content:hover {
 }
 
 #demo {
-  color: maroon;
+  color: rgb(239, 218, 83);
   padding-right: 15px;
-}
-
-.open-cages{
-  color: black;
-  background-image: url(../../images/eye.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 30px;
-  width: 100px;
-  border: none;
-  opacity: .2;
-}
-.open-cages span {
-  display: none;
-}
-
-.open-cages:hover{
-  opacity: 1;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 
+@media screen and (max-width: 1200px){
+  .footer{
+    display: none;
+  }
+}
 
 
 
