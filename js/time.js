@@ -7,7 +7,6 @@ let currentTime = new Date();
 let hours = currentTime.getHours();
 let minutes = currentTime.getMinutes();
 let currentTotalMinutes = (hours*60) + minutes;
-let currentEvents;
 
 var Time = {
   loadOpenAttractions: function(){
@@ -69,9 +68,9 @@ var Time = {
               // *************************************
               // CALL THE WRITE T0 SIDEBAR FUNCTION
               // *************************************
-              let accordion = `<div class="item" typeId=${item.type_id}>
+              let accordion = `<div class="item" typeId=${item.type_id} areaId=${item.area_id}>
                                <a data-toggle="collapse" data-parent="#accordion-wrapper" href="#${item.id}" aria-expanded="true" aria-controls="${item.id}">${item.name}</a>
-                               <p>Starts in: ${theseMinutes - currentTotalMinutes} minutes</p>
+                               <p style="color:white">Starts in: ${theseMinutes - currentTotalMinutes} minutes</p>
                                <div id="${item.id}" class="collapse" role="tabpanel">
                                  <p class="mb-3">${item.description}</p>
                                </div>
@@ -81,7 +80,7 @@ var Time = {
           }
         }
       })
-      currentEvents = $('.item');
+      let currentEvents = $('.item');
       Time.addTypes(currentEvents);
     })
   },

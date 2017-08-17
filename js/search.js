@@ -1,4 +1,5 @@
 let Park = require('./data_loader.js');
+let HbsTemplate = require('../templates/legend_list.hbs');
 let Search = {};
 let attractionsArr = [];
 
@@ -31,17 +32,7 @@ $('#user-input').keyup(function() {
 });
 
 //for each item in search results, print to DOM with link
-printResults = function(result) {
+printResults = function(data) {
   $('#accordion-wrapper').html('');
-  let accordion = '';
-  _.forEach(result, function(item) {
-    accordion = `<div class="item">
-                     <a data-toggle="collapse" data-parent="#accordion-wrapper" href="#${item.id}" aria-expanded="true" aria-controls="${item.id}">${item.name}</a>
-                     <div id="${item.id}" class="collapse" role="tabpanel">
-                       <p class="mb-3">${item.description}</p>
-                     </div>
-                 </div>`;
-    $('#accordion-wrapper').append(accordion);
-  });
+  $('#accordion-wrapper').append(HbsTemplate(data));
 };
-
