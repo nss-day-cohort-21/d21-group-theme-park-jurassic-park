@@ -37,20 +37,10 @@ var Handlers = {
       });
     });
   },
-
-  accordionOnClick: function() {
-          $("a").on("click", (e) => {
-      let id = $(e.target).parent().attr("areaid");
-
-      console.log("id is", id);
-
-    })
-  }
 };
 
 Handlers.loadAttractionsOnEnterKey();
 Handlers.loadAttractionsOnClickArea();
 Handlers.addBorderColor(dataLoader.areasCall);
-Handlers.addTimeFrame(dataLoader.attractionsCall);
 
 module.exports = Handlers;
