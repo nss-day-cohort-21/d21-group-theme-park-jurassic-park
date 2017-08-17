@@ -25,7 +25,7 @@ var Templates = {
       </div>
     </li>
         <input id="user-input" class="form-control mr-sm-2" type="text" placeholder="DinoSearch" aria-label="Search">
-        <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
+        
       </div>
     </div>
   </nav>
@@ -54,6 +54,10 @@ var Templates = {
       console.log(data);
       $('#accordion-wrapper').html('');
       $('#accordion-wrapper').append(HbsTemplate(data));
+
+      let currentEvents = $('.item');
+      Time.addTypes(currentEvents);
+
       $("a.attractionNameLink").on("click", (e) => {
       let gridRow = $('.img-wrapper').find("img");
       $(gridRow).removeAttr('style');
