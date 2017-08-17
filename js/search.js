@@ -3,11 +3,7 @@ let HbsTemplate = require('../templates/legend_list.hbs');
 let Search = {};
 let attractionsArr = [];
 let Handlers = require('./handlers.js');
-<<<<<<< HEAD
 let Time = require('./time');
-=======
-
->>>>>>> master
 // Fuzzy search parameters
 var options = {
   shouldSort: true,
@@ -68,6 +64,7 @@ printResults = function(data) {
           $(item).find('img').attr('style', `border: 3px solid #${color}`);
           let areaNamesss = $(item).children("a").html();
           let correctPTag = $(e.target).siblings("div").children(".areaNameDropDown").html(areaNamesss);
+          
         }
       });
     });
