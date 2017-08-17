@@ -3,6 +3,7 @@
 let Park = require('./data_loader');
 let Time = require('./time');
 let HbsTemplate = require('../templates/legend_list.hbs');
+let Handlersa = require('./handlers.js');
 
 var Templates = {
   loadNavbar: function() {
@@ -43,7 +44,9 @@ var Templates = {
     attractionCall(id).then(function(data) {
       $('#accordion-wrapper').html('');
       $('#accordion-wrapper').append(HbsTemplate(data));
+
     });
+      
   },
 
   loadAreas: function() {

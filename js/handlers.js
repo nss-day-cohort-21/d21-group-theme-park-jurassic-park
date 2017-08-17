@@ -34,6 +34,16 @@ var Handlers = {
         $(imageElement).attr('style', `border: 3px solid #${color}`);
       });
     });
+  },
+
+
+  accordionOnClick: function() {
+          $("a").on("click", (e) => {
+      let id = $(e.target).parent().attr("areaid");
+
+      console.log("id is", id);
+        
+    })
   }
 };
 
