@@ -2,7 +2,7 @@ let Park = require('./data_loader.js');
 let HbsTemplate = require('../templates/legend_list.hbs');
 let Search = {};
 let attractionsArr = [];
-
+let Handlers = require('./handlers.js');
 // Fuzzy search parameters
 var options = {
   shouldSort: true,
@@ -21,6 +21,8 @@ Park.attractionsCall().then(function(resolve) {
 
 //on key up, search array of objects for name matches, then print
 $('#user-input').keyup(function() {
+  let gridRow = $('.img-wrapper').find("img");
+  $(gridRow).removeAttr('style');
   let searchText = $('#user-input').val();
   let fuse = new Fuse(attractionsArr, options);
   let result = fuse.search(searchText);
@@ -35,4 +37,35 @@ $('#user-input').keyup(function() {
 printResults = function(data) {
   $('#accordion-wrapper').html('');
   $('#accordion-wrapper').append(HbsTemplate(data));
+            $("a.attractionNameLink").on("click", (e) => {
+              let gridRow = $('.img-wrapper').find("img");
+  $(gridRow).removeAttr('style');
+      let accordionid = $(e.target).parent().attr("areaid");
+
+       Park.areasCall().then(function(data) {
+        let color = data[accordionid - 1].colorTheme;
+        let imgwrap = $(".img-wrapper");
+
+          
+        imgwrap.each((index,item)=>{
+
+            
+          if(Number(item.id)===data[accordionid - 1].id){
+              
+            $(item).find('img').attr('style', `border: 3px solid #${color}`);
+
+
+
+          }
+        });
+
+        
+
+
+      });
+
+
+
+        
+    })
 };
