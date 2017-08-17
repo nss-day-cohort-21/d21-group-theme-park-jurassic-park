@@ -3,7 +3,11 @@ let HbsTemplate = require('../templates/legend_list.hbs');
 let Search = {};
 let attractionsArr = [];
 let Handlers = require('./handlers.js');
+<<<<<<< HEAD
 let Time = require('./time');
+=======
+
+>>>>>>> master
 // Fuzzy search parameters
 var options = {
   shouldSort: true,
@@ -12,7 +16,7 @@ var options = {
   distance: 100,
   maxPatternLength: 32,
   minMatchCharLength: 1,
-  keys: ['name']
+  keys: ['name'],
 };
 
 //create array of attractions objects
@@ -20,14 +24,23 @@ Park.attractionsCall().then(function(resolve) {
   attractionsArr = resolve;
 });
 
-//on key up, search array of objects for name matches, then print
-$('#user-input').keyup(function() {
-  let gridRow = $('.img-wrapper').find("img");
-  $(gridRow).removeAttr('style');
-  let searchText = $('#user-input').val();
-  if (searchText === "") {
-    Time.loadOpenAttractions();
+// Search by time or by name
+$('.dropdown-menu').click(function(event) {
+  // Set search key option name or time
+  if (event.target.id === 'attraction-time') {
+    options['keys'] = ['times'];
   } else {
+    options['keys'] = ['name'];
+  }
+
+  // Search on key up
+  $('#user-input').keyup(function() {
+    let gridRow = $('.img-wrapper').find('img');
+    $(gridRow).removeAttr('style');
+    let searchText = $('#user-input').val();
+    if (searchText === "") {
+      Time.loadOpenAttractions();
+    } else {
     let fuse = new Fuse(attractionsArr, options);
     let result = fuse.search(searchText);
     let namesList = [];
@@ -36,6 +49,7 @@ $('#user-input').keyup(function() {
     });
     printResults(namesList);
   }
+  });
 });
 
 //for each item in search results, print to DOM with link

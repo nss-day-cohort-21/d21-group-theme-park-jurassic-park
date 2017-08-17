@@ -58,7 +58,7 @@ var Templates = {
               let correctPTag = $(e.target).siblings("div").children(".areaNameDropDown").html(areaNamesss);
               let ariaControls = $(e.target).attr("aria-controls");
               let thisTimes = data[aria-controls-1].times;
-
+              
             }
           });
         });

@@ -62,9 +62,6 @@ var Park = {
       });
     });
   }
-
 };
-
-
 
 module.exports = Park;

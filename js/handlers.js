@@ -6,7 +6,8 @@ let templates = require('./templates.js');
 var Handlers = {
   loadAttractionsOnEnterKey: function() {
     $(document).keypress(function(event) {
-      if (event.keyCode === 13 && $('#user-input').is(':focus') && $('#user-input').val() !== '') {
+      if (event.keyCode === 13 && $('#user-input').is(':focus') &&
+        $('#user-input').val() !== '') {
         let userStr = $('#user-input').val();
         let capitalizedWord = _.startCase(_.toLower(userStr));
 
@@ -18,7 +19,8 @@ var Handlers = {
   },
   loadAttractionsOnClickArea: function() {
     $('.grid-row').click(function(event) {
-      templates.loadAttractionsByArea(dataLoader.attractionsCallByAreaId, event.target.id);
+      templates.loadAttractionsByArea(dataLoader.attractionsCallByAreaId,
+        event.target.id);
     });
   },
 
@@ -35,16 +37,6 @@ var Handlers = {
       });
     });
   },
-
-
-  accordionOnClick: function() {
-          $("a").on("click", (e) => {
-      let id = $(e.target).parent().attr("areaid");
-
-      console.log("id is", id);
-        
-    })
-  }
 };
 
 Handlers.loadAttractionsOnEnterKey();
