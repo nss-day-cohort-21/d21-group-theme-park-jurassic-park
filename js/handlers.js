@@ -37,6 +37,15 @@ var Handlers = {
       });
     });
   },
+
+  accordionOnClick: function() {
+          $("a").on("click", (e) => {
+      let id = $(e.target).parent().attr("areaid");
+
+      console.log("id is", id);
+
+    })
+  }
 };
 
 Handlers.loadAttractionsOnEnterKey();
