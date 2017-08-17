@@ -44,9 +44,27 @@ var Templates = {
     attractionCall(id).then(function(data) {
       $('#accordion-wrapper').html('');
       $('#accordion-wrapper').append(HbsTemplate(data));
+      $("a.attractionNameLink").on("click", (e) => {
+      let gridRow = $('.img-wrapper').find("img");
+      $(gridRow).removeAttr('style');
+        let accordionid = $(e.target).parent().attr("areaid");
+         Park.areasCall().then(function(dataArea) {
+          let color = dataArea[accordionid - 1].colorTheme;
+          let imgwrap = $(".img-wrapper");
+          imgwrap.each((index,item)=>{
+            if(Number(item.id)===dataArea[accordionid - 1].id){
+              $(item).find('img').attr('style', `border: 3px solid #${color}`);
+              let areaNamesss = $(item).children("a").html();
+              let correctPTag = $(e.target).siblings("div").children(".areaNameDropDown").html(areaNamesss);
+              let ariaControls = $(e.target).attr("aria-controls");
+              let thisTimes = data[aria-controls-1].times;
 
+            }
+          });
+        });
+      })
     });
-      
+
   },
 
   loadAreas: function() {

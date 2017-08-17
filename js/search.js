@@ -45,16 +45,17 @@ printResults = function(data) {
   $("a.attractionNameLink").on("click", (e) => {
   let gridRow = $('.img-wrapper').find("img");
   $(gridRow).removeAttr('style');
-      let accordionid = $(e.target).parent().attr("areaid");
-       Park.areasCall().then(function(data) {
-        let color = data[accordionid - 1].colorTheme;
-        let imgwrap = $(".img-wrapper");
-        imgwrap.each((index,item)=>{
-          if(Number(item.id)===data[accordionid - 1].id){
-
-            $(item).find('img').attr('style', `border: 3px solid #${color}`);
-          }
-        });
+    let accordionid = $(e.target).parent().attr("areaid");
+     Park.areasCall().then(function(data) {
+      let color = data[accordionid - 1].colorTheme;
+      let imgwrap = $(".img-wrapper");
+      imgwrap.each((index,item)=>{
+        if(Number(item.id)===data[accordionid - 1].id){
+          $(item).find('img').attr('style', `border: 3px solid #${color}`);
+          let areaNamesss = $(item).children("a").html();
+          let correctPTag = $(e.target).siblings("div").children(".areaNameDropDown").html(areaNamesss);
+        }
       });
-    })
+    });
+  })
 };
