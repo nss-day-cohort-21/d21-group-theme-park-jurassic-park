@@ -24,11 +24,14 @@ var Handlers = {
 
   addBorderColor: function(attributeCall) {
     $('.grid-row').click(function(event) {
+      let id = event.target.id;
+      let gridRow = $(event.currentTarget)[0];
+      let imageElement = $(gridRow).find(`img#${id}`)[0];
+      $(gridRow).find('img').removeAttr('style');
+
       attributeCall().then(function(data) {
-        let color = data[$(event.target)[0].id].colorTheme;
-        let imageElement = $(event.currentTarget).find(`img#${event.target.id}`)[0];
+        let color = data[id - 1].colorTheme;
         $(imageElement).attr('style', `border: 3px solid #${color}`);
-        console.log('Img: ', imageElement, color);
       });
     });
   }
@@ -37,4 +40,5 @@ var Handlers = {
 Handlers.loadAttractionsOnEnterKey();
 Handlers.loadAttractionsOnClickArea();
 Handlers.addBorderColor(dataLoader.areasCall);
+
 module.exports = Handlers;

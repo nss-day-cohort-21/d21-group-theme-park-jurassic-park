@@ -2,7 +2,7 @@ let Park = require('./data_loader.js');
 let Search = {};
 let attractionsArr = [];
 
-//fuse search parameters
+// Fuzzy search parameters
 var options = {
   shouldSort: true,
   threshold: 0.1,
