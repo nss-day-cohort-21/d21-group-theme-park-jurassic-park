@@ -2,6 +2,7 @@ let Park = require('./data_loader.js');
 let HbsTemplate = require('../templates/legend_list.hbs');
 let Search = {};
 let attractionsArr = [];
+let attractionsTypeArr = [];
 let Handlers = require('./handlers.js');
 
 // Fuzzy search parameters
@@ -19,29 +20,63 @@ var options = {
 Park.attractionsCall().then(function(resolve) {
   attractionsArr = resolve;
 });
+Park.attractionsTypeCall().then(function(data) {
+  attractionsTypeArr = data;
+});
 
 // Search by time or by name
-$('.dropdown-menu').click(function(event) {
+$('.attractions-radio').click(function(event) {
   // Set search key option name or time
-  if (event.target.id === 'attraction-time') {
+  if (event.target.id === 'attractions-time') {
     options['keys'] = ['times'];
-  } else {
-    options['keys'] = ['name'];
-  }
-
-  // Search on key up
-  $('#user-input').keyup(function() {
-    let gridRow = $('.img-wrapper').find('img');
-    $(gridRow).removeAttr('style');
-    let searchText = $('#user-input').val();
-    let fuse = new Fuse(attractionsArr, options);
-    let result = fuse.search(searchText);
-    let namesList = [];
-    result.forEach(item => {
-      namesList.push(item);
+    // Search on key up
+    $('#user-input').keyup(function() {
+      let gridRow = $('.img-wrapper').find('img');
+      $(gridRow).removeAttr('style');
+      let searchText = $('#user-input').val();
+      let fuse = new Fuse(attractionsArr, options);
+      let result = fuse.search(searchText);
+      let namesList = [];
+      result.forEach(item => {
+        namesList.push(item);
+      });
+      printResults(namesList);
     });
-    printResults(namesList);
-  });
+  } else if (event.target.id === 'attractions-name') {
+    options['keys'] = ['name'];
+    // Search on key up
+    $('#user-input').keyup(function() {
+      let gridRow = $('.img-wrapper').find('img');
+      $(gridRow).removeAttr('style');
+      let searchText = $('#user-input').val();
+      let fuse = new Fuse(attractionsArr, options);
+      let result = fuse.search(searchText);
+      let namesList = [];
+      result.forEach(item => {
+        namesList.push(item);
+      });
+      printResults(namesList);
+    });
+  } else if (event.target.id === 'attractions-type') {
+    options['keys'] = ['name'];
+    // Search on key up
+    $('#user-input').keyup(function() {
+      let gridRow = $('.img-wrapper').find('img');
+      $(gridRow).removeAttr('style');
+      let searchText = $('#user-input').val();
+      let fuse = new Fuse(attractionsTypeArr, options);
+      let result = fuse.search(searchText);
+
+      Park.attractionsCallByTypeId(result[0].id).then(function(data) {
+          let namesList = [];
+        _.forOwn(data, function(item) {
+          namesList.push(item);
+        });
+        printResults(namesList);
+        console.log('nameList: ', namesList);
+      });
+    });
+  }
 });
 
 //for each item in search results, print to DOM with link

@@ -16,16 +16,31 @@ var Templates = {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <input id="user-input" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
           <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-          Select Search Type:
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a id="attraction-name" class="dropdown-item" href="#">Attraction Name</a>
-          <a id="attraction-time" class="dropdown-item" href="#">Attraction Time</a>
-        </div>
-      </li>
+          <fieldset class="form-group attractions-radio">
+            <div class="row">
+              <legend class="col-form-legend col-sm-12">Search By:</legend>
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="attractions" id="attractions-name" value="attractions-name">
+                    Name
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="attractions" id="attractions-time" value="attractions-time">
+                    Time
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="attractions" id="attractions-type" value="attractions-type">
+                    Type
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
         </div>
       </div>
     </nav>
