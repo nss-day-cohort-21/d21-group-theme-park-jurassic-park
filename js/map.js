@@ -20,7 +20,8 @@ MapGrid.appendMap = (areaId) => {
 //get map dimensions based on number of attractions
 function getDimensions(num) {
 	let arr = [];
-	let h, w = Math.ceil(Math.sqrt(num));
+	let h = 0;
+	w = Math.ceil(Math.sqrt(num));
 	while (w !== num) {
 		if (num % w === 0){
 			h = num / w;
@@ -28,6 +29,9 @@ function getDimensions(num) {
 		} else {
 			w++;
 		}
+	}
+	if (h === 0) {
+		h = 1;
 	}
 	arr.push(h,w);
 	return arr;
