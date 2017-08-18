@@ -115,7 +115,7 @@ p{
 }
 
 .img-wrapper:hover {
-    box-shadow: inset 0 0 25px #000000;
+    box-shadow: inset 0 0 50px #000000;
 }
 
 /* Map links and transition on hover
@@ -132,11 +132,11 @@ a.img-content {
 }
 
 a.img-content:hover {
-  border-bottom: 3px solid maroon;
+  border-bottom: 3px solid darkgoldenrod;
   transition: all 0.75s ease-in-out;
   -webkit-transition: all 0.75 ease-in-out;
-    color: darkgoldenrod;
-    font-size: 1.5em;
+    color: maroon;
+    font-size: 1.1em;
 }
 
 /* Creates small padding between attraction list and map.
@@ -189,12 +189,12 @@ a.img-content:hover {
   background-color:rgba(200,50,50,0.8);
   width: 100%;
   text-align: center;
-  position: fixed;
-  bottom: 0px;
-    color: red;
-    margin: 0;
-    padding: 0;
-}
+  position: relative;
+  margin-top: -50px;
+  height: 90px;
+  clear:both;
+  bottom: 0;
+} 
 
 .footer p span {
     width: 50%;
@@ -282,7 +282,7 @@ fieldset.itinerary-form {
 
 
 html {
-  height: 100vh;
+  height: 100%;
 }
 
 /*ADJUSTS MODAL SHIFT*/
