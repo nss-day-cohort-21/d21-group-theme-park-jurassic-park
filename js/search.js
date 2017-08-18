@@ -4,6 +4,7 @@ let Search = {};
 let attractionsArr = [];
 let attractionsTypeArr = [];
 let Handlers = require('./handlers.js');
+let Time = require('./time');
 
 // Fuzzy search parameters
 var options = {
@@ -34,13 +35,17 @@ $('.attractions-radio').click(function(event) {
       let gridRow = $('.img-wrapper').find('img');
       $(gridRow).removeAttr('style');
       let searchText = $('#user-input').val();
-      let fuse = new Fuse(attractionsArr, options);
-      let result = fuse.search(searchText);
-      let namesList = [];
-      result.forEach(item => {
-        namesList.push(item);
-      });
-      printResults(namesList);
+      if (searchText === '') {
+        Time.loadOpenAttractions();
+      } else {
+        let fuse = new Fuse(attractionsArr, options);
+        let result = fuse.search(searchText);
+        let namesList = [];
+        result.forEach(item => {
+          namesList.push(item);
+        });
+        printResults(namesList);
+      }
     });
   } else if (event.target.id === 'attractions-name') {
     options['keys'] = ['name'];
@@ -49,13 +54,17 @@ $('.attractions-radio').click(function(event) {
       let gridRow = $('.img-wrapper').find('img');
       $(gridRow).removeAttr('style');
       let searchText = $('#user-input').val();
-      let fuse = new Fuse(attractionsArr, options);
-      let result = fuse.search(searchText);
-      let namesList = [];
-      result.forEach(item => {
-        namesList.push(item);
-      });
-      printResults(namesList);
+      if (searchText === '') {
+        Time.loadOpenAttractions();
+      } else {
+        let fuse = new Fuse(attractionsArr, options);
+        let result = fuse.search(searchText);
+        let namesList = [];
+        result.forEach(item => {
+          namesList.push(item);
+        });
+        printResults(namesList);
+      }
     });
   } else if (event.target.id === 'attractions-type') {
     options['keys'] = ['name'];
@@ -64,17 +73,20 @@ $('.attractions-radio').click(function(event) {
       let gridRow = $('.img-wrapper').find('img');
       $(gridRow).removeAttr('style');
       let searchText = $('#user-input').val();
-      let fuse = new Fuse(attractionsTypeArr, options);
-      let result = fuse.search(searchText);
+      if (searchText === '') {
+        Time.loadOpenAttractions();
+      } else {
+        let fuse = new Fuse(attractionsTypeArr, options);
+        let result = fuse.search(searchText);
 
-      Park.attractionsCallByTypeId(result[0].id).then(function(data) {
+        Park.attractionsCallByTypeId(result[0].id).then(function(data) {
           let namesList = [];
-        _.forOwn(data, function(item) {
-          namesList.push(item);
+          _.forOwn(data, function(item) {
+            namesList.push(item);
+          });
+          printResults(namesList);
         });
-        printResults(namesList);
-        console.log('nameList: ', namesList);
-      });
+      }
     });
   }
 });
