@@ -52,6 +52,18 @@ var Park = {
     });
   },
 
+  attractionsCallByTypeId: function(value) {
+    return new Promise(function(resolve, reject) {
+      $.ajax({
+        url: `https://android-chat-app-c66de.firebaseio.com/attractions.json?orderBy="type_id"&equalTo=${value}`
+      }).done(function(data) {
+        // let mapArr = Park.createAttractionsList(data);
+
+        resolve(data);
+      });
+    });
+  },
+
   attractionsTypeCall: function(value) {
     return new Promise(function(resolve, reject) {
       $.ajax({

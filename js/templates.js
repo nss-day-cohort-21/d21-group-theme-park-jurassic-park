@@ -9,50 +9,48 @@ let MapGrid = require('./map.js');
 var Templates = {
   loadNavbar: function() {
     $('body').before(`
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand JPL" href="#"><img src="images/Jurassic_Park_logo.jpg" style="width:90px;height:60px;display:inline-block"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-        Select Search Type:
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a id="attraction-name" class="dropdown-item" href="#">Attraction Name</a>
-        <a id="attraction-time" class="dropdown-item" href="#">Attraction Time</a>
-      </div>
-    </li>
-        <input id="user-input" class="form-control mr-sm-2" type="text" placeholder="DinoSearch" aria-label="Search">
-        
-      </div>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#"><img src="images/Jurassic_Park_logo.jpg" style="width:90px;height:60px;display:inline-block"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <input id="user-input" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
+          <fieldset class="form-group attractions-radio">
+            <div class="row">
+              <legend class="col-form-legend col-sm-12">Search By:</legend>
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="attractions" id="attractions-name" value="attractions-name">
+                    Name
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="attractions" id="attractions-time" value="attractions-time">
+                    Time
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="attractions" id="attractions-type" value="attractions-type">
+                    Type
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
   </nav>
   `);
   },
-
-  // TODO: highlight border of grid instead of write names to DOM.
-  // loadAttractionsToDomOnSearch: function(data) {
-  //   let accordion = '';
-  //   $('.attractions-list').html('');
-  //   _.forEach(data, function(item) {
-  //     accordion = `<div class="item" typeId=${item.type_id}>
-  //                       <a data-toggle="collapse" data-parent="#accordion-wrapper" href="#${item.id}" aria-expanded="true" aria-controls="${item.id}">${item.name}</a>
-  //                       <div id="${item.id}" class="collapse" role="tabpanel">
-  //                         <p class="mb-3" style="color:white">${item.description}</p>
-  //                       </div>
-  //                   </div>`;
-  //     $('.attractions-list').append(HbsTemplate(data));
-  //   });
-  // },
 
   loadAttractionsByArea: function(attractionCall, id) {
     let accordion = '';
 
     attractionCall(id).then(function(data) {
-      console.log(data);
       $('#accordion-wrapper').html('');
       $('#accordion-wrapper').append(HbsTemplate(data));
 
