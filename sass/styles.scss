@@ -17,6 +17,23 @@ body{
   background-color: #111 !important;
 }
 
+#navbarSupportedContent{
+  padding-left:0;
+  margin-left: 0;
+}
+
+#navbarDropdownMenuLink{
+  padding-right: 0;
+  margin-left: 15%;
+}
+
+.nav-link{
+  color: maroon;
+}
+.nav-link:hover{
+  color: goldenrod;
+}
+
 /*******SEARCH RESULTS CSS**********/
 .item{
     transition-duration: .7s;
@@ -36,7 +53,7 @@ body{
 }
 
 #searchResults {
-    background-color: rgba(250,200,150,0.5);
+    background-color: rgba(270,150,150,0.3);
 }
 
 #searchResults a{
@@ -44,13 +61,22 @@ body{
     font-family: 'Slabo 27px', serif;
 }
 
+.navbar {
+  margin:0; 
+  padding:0;
+}
+
 /*OTHER*/
 p{
-  color: yellow;
+  color: white;
 }
 
 .btn-warning {
-  background-color: yellow !important;
+  background-color: brown !important;
+}
+.navbar-brand{
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -60,7 +86,7 @@ p{
   border: 0;
   width: 100%;
   height: 10rem;
-  z-index: -1;
+  z-index: -50;
 }
 
 .bkimg{
@@ -75,7 +101,7 @@ p{
   background-attachment: fixed;
   width: 100%;
   height: 10rem;
-    opacity: .85;
+  opacity: 1;
 }
 
 .col-4 {
@@ -89,7 +115,7 @@ p{
 }
 
 .img-wrapper:hover {
-    box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 25px #000000;
 }
 
 /* Map links and transition on hover
@@ -134,9 +160,33 @@ a.img-content:hover {
   overflow-y: auto;
 }
 
+/*********MAP GRID**************/
+
+.map-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  height: 10rem;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.map-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.pin {
+  width: 100px;
+}
+
 /*********FOOTER**************/
 .footer {
-  background: black;
+  background-color:rgba(200,50,50,0.8);
   width: 100%;
   text-align: center;
   position: fixed;
@@ -152,12 +202,22 @@ a.img-content:hover {
     padding: 0;
 }
 .footer p{
-    font-size: 1.5em;
+    font-size: 1.7em;
     font-family: 'Cinzel', serif;
+    color: black;
     margin: 0;
     padding: 0;
 }
 
 #demo {
-  color: red;
+  color: rgb(239, 218, 83);
+  padding-right: 15px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+@media screen and (max-width: 1200px){
+  .footer{
+    display: none;
+  }
 }

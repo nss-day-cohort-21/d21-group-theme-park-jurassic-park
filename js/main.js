@@ -25,3 +25,19 @@ function getTime(i){
     return i;
 }
 liveTime();
+
+
+$('.open-cages').click(function(){
+    $('.bkimg').css('backgroundImage', 'url(../../images/breakout.jpg');
+    $('.img').css('opacity', '.3');
+})
+
+
+
+
+
+
+
+
+
+

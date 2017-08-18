@@ -4,6 +4,7 @@ let Park = require('./data_loader');
 let Time = require('./time');
 let HbsTemplate = require('../templates/legend_list.hbs');
 let Handlersa = require('./handlers.js');
+let MapGrid = require('./map.js');
 
 var Templates = {
   loadNavbar: function() {
@@ -43,8 +44,13 @@ var Templates = {
           </fieldset>
         </div>
       </div>
-    </nav>
-    `);
+    </li>
+        <input id="user-input" class="form-control mr-sm-2" type="text" placeholder="DinoSearch" aria-label="Search">
+
+      </div>
+    </div>
+  </nav>
+  `);
   },
 
   // TODO: highlight border of grid instead of write names to DOM.
@@ -66,9 +72,35 @@ var Templates = {
     let accordion = '';
 
     attractionCall(id).then(function(data) {
+      console.log(data);
       $('#accordion-wrapper').html('');
       $('#accordion-wrapper').append(HbsTemplate(data));
 
+      let currentEvents = $('.item');
+      Time.addTypes(currentEvents);
+
+      $("a.attractionNameLink").on("click", (e) => {
+      let gridRow = $('.img-wrapper').find("img");
+      $(gridRow).removeAttr('style');
+        let accordionid = $(e.target).parent().attr("areaid");
+         Park.areasCall().then(function(dataArea) {
+          let color = dataArea[accordionid - 1].colorTheme;
+          let imgwrap = $(".img-wrapper");
+          imgwrap.each((index,item)=>{
+            if(Number(item.id)===dataArea[accordionid - 1].id){
+              $(item).find('.img').attr('style', `border: 3px solid #${color}`);
+              let areaNamesss = $(item).children("a").html();
+              let correctPTag = $(e.target).siblings("div").children(".areaNameDropDown").html(areaNamesss+`<br>`);
+              let ariaControls = $(e.target).attr("aria-controls");
+              let thisTimes = data[ariaControls-1].times;
+              if (thisTimes !== undefined) {
+                thisTimes = thisTimes.toString().replace(/\M/g, "M ");
+                $(e.target).siblings("div").children(".areaNameDropDown").append(thisTimes);
+              }
+            }
+          });
+        });
+      })
     });
 
   },
@@ -90,7 +122,6 @@ var Templates = {
                               <img class="img-thumbnail img" id="${item.id}">
                             </div>
                           </div>`;
-
           $('.grid-row').append(gridElement);
         } else {
           gridElement = `<div class="col-4">
@@ -102,9 +133,10 @@ var Templates = {
 
           $('.grid-row').append(gridElement);
         }
+        MapGrid.appendMap(item.id);  //create map grid here
       });
     });
-  },
+  }
 };
 
 module.exports = Templates;
