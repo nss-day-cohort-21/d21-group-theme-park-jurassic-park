@@ -211,11 +211,11 @@ a.img-content:hover {
   background-color:rgba(200,50,50,0.8);
   width: 100%;
   text-align: center;
-  position: relative;
+  position: fixed;
   margin-top: -50px;
   clear:both;
-  bottom: -13px;
-} 
+  bottom: 0;
+}
 
 .footer p span {
     width: 50%;
