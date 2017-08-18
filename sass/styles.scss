@@ -221,3 +221,77 @@ a.img-content:hover {
     display: none;
   }
 }
+
+
+/////////////////////FANG///////////////////////
+
+
+
+.itinerary {
+  float: left;
+  margin-left: 10%;
+}
+.firebase {
+    display:block;
+    float:right;
+    max-width: 500px;
+    max-height: 200px !important;
+    overflow-y: auto;
+
+}
+.card {
+
+
+  margin-bottom: 1em;
+  color:red;    
+  margin-left: 10%; 
+
+  opacity: .8;
+  h4 {
+    color:black;
+  }
+  label{
+    font-size:1.3em;
+  }
+}
+fieldset {
+
+    text-align: right;
+    color:yellow;
+    font-weight:bolder;
+    border:3px solid black;
+    display:inline-block;
+    padding-left:7%;
+    padding-right:7%;
+
+    #addbutton {
+      margin-bottom: 1em;
+      margin-right: 25%;
+    }
+    input{
+      margin-right: 5em;
+    }
+    #album-name{
+
+      margin-right: 23%;
+    }
+    legend{
+      text-align: center;
+    }
+}
+
+
+html {
+  height: 100vh;
+}
+
+/*ADJUSTS MODAL SHIFT*/
+.modal-open{
+    padding-right: 0 !important;
+    overflow-y: none;
+}
+.timeago {
+  width: 10px;
+  height:10px;
+
+}
