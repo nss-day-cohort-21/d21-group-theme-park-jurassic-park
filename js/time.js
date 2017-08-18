@@ -114,7 +114,7 @@ var Time = {
     Park.attractionsTypeCall().then(function(data) {
       $(nowEvents).each((index, item) => {
         $(data).each((dataIndex, dataItem) => {
-          if (Number($(item).attr("typeid")) === dataItem.id) {
+          if (Number($(item).attr("typeid")) == dataItem.id) {
             $(item).children("p").append(` ${dataItem.name}`);
           }
         });

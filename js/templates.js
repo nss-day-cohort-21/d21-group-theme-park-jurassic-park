@@ -47,26 +47,10 @@ var Templates = {
   `);
   },
 
-  // TODO: highlight border of grid instead of write names to DOM.
-  // loadAttractionsToDomOnSearch: function(data) {
-  //   let accordion = '';
-  //   $('.attractions-list').html('');
-  //   _.forEach(data, function(item) {
-  //     accordion = `<div class="item" typeId=${item.type_id}>
-  //                       <a data-toggle="collapse" data-parent="#accordion-wrapper" href="#${item.id}" aria-expanded="true" aria-controls="${item.id}">${item.name}</a>
-  //                       <div id="${item.id}" class="collapse" role="tabpanel">
-  //                         <p class="mb-3" style="color:white">${item.description}</p>
-  //                       </div>
-  //                   </div>`;
-  //     $('.attractions-list').append(HbsTemplate(data));
-  //   });
-  // },
-
   loadAttractionsByArea: function(attractionCall, id) {
     let accordion = '';
 
     attractionCall(id).then(function(data) {
-      console.log(data);
       $('#accordion-wrapper').html('');
       $('#accordion-wrapper').append(HbsTemplate(data));
 
