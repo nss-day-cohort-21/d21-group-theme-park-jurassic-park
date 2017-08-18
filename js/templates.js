@@ -10,7 +10,7 @@ var Templates = {
   loadNavbar: function() {
     $('body').before(`
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#"><img src="images/Jurassic_Park_logo.jpg" style="width:170px;height110px;display:inline-block;margin-left:450px"></a>
+      <a class="navbar-brand" href="#"><img src="images/Jurassic_Park_logo.jpg" style="width:100px;height:70px;display:inline-block;margin-left:450px"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
