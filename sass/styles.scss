@@ -8,6 +8,8 @@ body{
 
 .navbar-collapse {
   justify-content: center;
+  height:20px;
+  padding-top: 1em;
   input {
     max-width: 20rem;
   }
@@ -78,7 +80,9 @@ p{
   margin: 0;
   padding: 0;
 }
-
+.form-check, .form-check-label{
+  display:inline-block;
+}
 
 /*********IMAGE SETTINGS**********/
 .img-thumbnail {
@@ -156,7 +160,7 @@ a.img-content:hover {
 }
 
 #searchResults {
-  max-height: 500px !important;
+  max-height: 485px !important;
   overflow-y: auto;
 }
 
@@ -191,9 +195,8 @@ a.img-content:hover {
   text-align: center;
   position: relative;
   margin-top: -50px;
-  height: 90px;
   clear:both;
-  bottom: 0;
+  bottom: -13px;
 } 
 
 .footer p span {
@@ -207,6 +210,7 @@ a.img-content:hover {
     color: black;
     margin: 0;
     padding: 0;
+
 }
 
 #demo {
@@ -229,7 +233,7 @@ a.img-content:hover {
 
 .itinerary {
   float: left;
-  margin-left: 10%;
+  margin-left: 5%;
 }
 .firebase {
     display:block;
@@ -237,7 +241,9 @@ a.img-content:hover {
     max-width: 500px;
     max-height: 200px !important;
     overflow-y: auto;
-
+    margin-top:0px;
+    padding-top:1em;
+    margin-right:1.5em;
 }
 .card {
 
@@ -255,25 +261,25 @@ a.img-content:hover {
   }
 }
 fieldset.itinerary-form {
-
+  display:flex;
     text-align: right;
     color:yellow;
     font-weight:bolder;
     border:3px solid black;
     display:inline-block;
-    padding-left:7%;
-    padding-right:7%;
+    padding-left: 5%;
+    padding-right:5%;
 
     #addbutton {
       margin-bottom: 1em;
-      margin-right: 25%;
+      margin-right: 24%;
     }
     input{
       margin-right: 5em;
     }
     #album-name{
-
-      margin-right: 23%;
+      align-content: flex-start;
+      margin-right: 20%;
     }
     legend{
       text-align: center;
@@ -294,4 +300,12 @@ html {
   width: 10px;
   height:10px;
 
+}
+.row {
+  margin-bottom: 0;
+}
+@media (max-width: 2000px){
+  #album-name{
+      margin-right: 25%;
+    }
 }
