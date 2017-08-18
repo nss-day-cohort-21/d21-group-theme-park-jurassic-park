@@ -27,6 +27,7 @@ Park.attractionsTypeCall().then(function(data) {
 
 // Search by time or by name
 $('.attractions-radio').click(function(event) {
+
   // Set search key option name or time
   if (event.target.id === 'attractions-time') {
     options['keys'] = ['times'];
@@ -35,13 +36,14 @@ $('.attractions-radio').click(function(event) {
       let gridRow = $('.img-wrapper').find('img');
       $(gridRow).removeAttr('style');
       let searchText = $('#user-input').val();
+
       if (searchText === '') {
         Time.loadOpenAttractions();
       } else {
         let fuse = new Fuse(attractionsArr, options);
         let result = fuse.search(searchText);
         let namesList = [];
-        result.forEach(item => {
+        _.forEach(result, function(item) {
           namesList.push(item);
         });
         printResults(namesList);

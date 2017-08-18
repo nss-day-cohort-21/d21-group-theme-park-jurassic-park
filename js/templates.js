@@ -43,12 +43,6 @@ var Templates = {
             </div>
           </fieldset>
         </div>
-      </div>
-    </li>
-        <input id="user-input" class="form-control mr-sm-2" type="text" placeholder="DinoSearch" aria-label="Search">
-
-      </div>
-    </div>
   </nav>
   `);
   },
