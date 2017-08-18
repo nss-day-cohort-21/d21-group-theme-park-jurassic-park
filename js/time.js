@@ -12,7 +12,6 @@ var Time = {
   loadOpenAttractions: function(){
     $('#accordion-wrapper').html('');
     Park.attractionsCall().then(function(data) {
-      console.log(data);
       $(data).each((index, item)=>{
         if (item.times !== undefined) {
           let eachAttTimes = item.times;
@@ -95,7 +94,7 @@ var Time = {
           let imgwrap = $(".img-wrapper");
           imgwrap.each((index,item)=>{
             if(Number(item.id)===dataArea[accordionid - 1].id){
-              $(item).find('img').attr('style', `border: 3px solid #${color}`);
+              $(item).find('.img').attr('style', `border: 3px solid #${color}`);
               let areaNamesss = $(item).children("a").html();
               let correctPTag = $(e.target).siblings("div").children(".areaNameDropDown").html(areaNamesss+`<br>`);
               let ariaControls = $(e.target).attr("aria-controls");

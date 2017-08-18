@@ -4,6 +4,7 @@ let Park = require('./data_loader');
 let Time = require('./time');
 let HbsTemplate = require('../templates/legend_list.hbs');
 let Handlersa = require('./handlers.js');
+let MapGrid = require('./map.js');
 
 var Templates = {
   loadNavbar: function() {
@@ -67,7 +68,7 @@ var Templates = {
           let imgwrap = $(".img-wrapper");
           imgwrap.each((index,item)=>{
             if(Number(item.id)===dataArea[accordionid - 1].id){
-              $(item).find('img').attr('style', `border: 3px solid #${color}`);
+              $(item).find('.img').attr('style', `border: 3px solid #${color}`);
               let areaNamesss = $(item).children("a").html();
               let correctPTag = $(e.target).siblings("div").children(".areaNameDropDown").html(areaNamesss+`<br>`);
               let ariaControls = $(e.target).attr("aria-controls");
@@ -101,7 +102,6 @@ var Templates = {
                               <img class="img-thumbnail img" id="${item.id}">
                             </div>
                           </div>`;
-
           $('.grid-row').append(gridElement);
         } else {
           gridElement = `<div class="col-4">
@@ -113,6 +113,7 @@ var Templates = {
 
           $('.grid-row').append(gridElement);
         }
+        MapGrid.appendMap(item.id);  //create map grid here
       });
     });
   }

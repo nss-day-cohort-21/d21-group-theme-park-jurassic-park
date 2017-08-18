@@ -32,6 +32,7 @@ var Handlers = {
       $(gridRow).find('img').removeAttr('style');
 
       attributeCall().then(function(data) {
+        console.log("addBorderColor firing");
         let color = data[id - 1].colorTheme;
         $(imageElement).attr('style', `border: 3px solid #${color}`);
       });
