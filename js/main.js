@@ -65,13 +65,13 @@ document.getElementById("album-name").onkeydown = checkenterkey;
 
 function checkenterkey(e) {
     if (e.keyCode == 13) {
-        takeuserinput();    
+        takeuserinput();
     }
 }
 document.getElementById("addbutton").addEventListener("click", takeuserinput);
 function checkenterkey(e) {
     if (e.keyCode == 13) {
-        takeuserinput();    
+        takeuserinput();
     }
 }
 
@@ -79,7 +79,7 @@ function checkenterkey(e) {
 /////////////////////RECORDING USER DATA////////////////////////
 function takeuserinput() {
 
-        
+
     let name = document.getElementById("song-name").value;
     let artist = document.getElementById("artist").value;
     let album = document.getElementById("album-name").value;
@@ -96,7 +96,7 @@ function takeuserinput() {
       name: name,
       time:currentdate
     };
-   
+
     if (name ==="") {
         alert("Enter an Event Name");
         document.getElementById("song-name").focus();
@@ -125,14 +125,14 @@ function senddatatofirebase(newSong) {
       data: JSON.stringify(newSong),
       header: "messages"
     })
-    .done(function(response) {          
-        newSong.key = response.name;        
+    .done(function(response) {
+        newSong.key = response.name;
         document.getElementById("song-name").value="";
         document.getElementById("artist").value="";
         document.getElementById("album-name").value="";
         document.getElementById("song-name").focus();
         printdatatoHTML(newSong);
-        
+
     });
 }
 
@@ -145,39 +145,28 @@ $(document.body).append(modal);
 
 function printdatatoHTML(newSong) {
         newSong.counter=songcounter;
-        $("#rows").prepend(songtemplate(newSong));   
+        $("#rows").prepend(songtemplate(newSong));
         $(`#b${songcounter}`).on("click", (event)=>{
                     $.ajax({
                       url: `https://musichistory-43b58.firebaseio.com/${newSong.key}/.json`,
                       method: "DELETE"
                     })
                     .done(function(response) {
-                        deleteself(event);  
+                        deleteself(event);
                       // console.log("response after deletion", response);
                       // You'll likely want to execute the code that you're using
                       // on page load here to run the GET XHR and bind to Handlebars
                     });
-                }); 
+                });
 
         songcounter+=1;
         $('.timeago').timeago();
 }
 
 function deleteself(event) {
-    let parent = event.target.parentNode.parentNode;         
-            
+    let parent = event.target.parentNode.parentNode;
+
     parent.parentNode.removeChild(parent);
     $(".modal-body").html("Event Successfully Deleted!");
     $('#myModal').modal('show');
-}   
-
-
-
-
-
-
-
-
-
-
-
+}

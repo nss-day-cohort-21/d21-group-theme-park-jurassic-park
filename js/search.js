@@ -37,6 +37,7 @@ $('.attractions-radio').click(function(event) {
       $(gridRow).removeAttr('style');
       let searchText = $('#user-input').val();
       if (searchText === '') {
+        $('#accordion-wrapper').html('');
         Time.loadOpenAttractions();
       } else {
         let fuse = new Fuse(attractionsArr, options);
@@ -56,6 +57,7 @@ $('.attractions-radio').click(function(event) {
       $(gridRow).removeAttr('style');
       let searchText = $('#user-input').val();
       if (searchText === '') {
+        $('#accordion-wrapper').html('');
         Time.loadOpenAttractions();
       } else {
         let fuse = new Fuse(attractionsArr, options);
@@ -75,6 +77,7 @@ $('.attractions-radio').click(function(event) {
       $(gridRow).removeAttr('style');
       let searchText = $('#user-input').val();
       if (searchText === '') {
+        $('#accordion-wrapper').html('');
         Time.loadOpenAttractions();
       } else {
         let fuse = new Fuse(attractionsTypeArr, options);
@@ -108,18 +111,19 @@ printResults = function(data) {
       let imgwrap = $(".img-wrapper");
       imgwrap.each((index,item)=>{
         if(Number(item.id)===dataArea[accordionid - 1].id){
-          console.log("item", item);
           $(item).find('.img').attr('style', `border: 3px solid #${color}`);
           let areaNamesss = $(item).children("a").html();
           let correctPTag = $(e.target).siblings("div").children(".areaNameDropDown").html(areaNamesss + `<br>`);
-          let ariaControls = $(e.target).attr("aria-controls");
-          let thisTimes = data[index].times;
-          if (thisTimes !== undefined) {
-            thisTimes = thisTimes.toString().replace(/\M/g, "M ");
-            $(e.target).siblings("div").children(".areaNameDropDown").append(thisTimes);
-          }
         }
       });
+      $(data).each((dindex, ditem) => {
+        let ariaControls = $(e.target).attr("aria-controls");
+        if (Number(ditem.id) === Number(ariaControls) && ditem.times !== undefined) {
+          let thisTimes = ditem.times;
+          thisTimes = thisTimes.toString().replace(/\M/g, "M ");
+          $(e.target).siblings("div").children(".areaNameDropDown").append(thisTimes);
+        }
+      })
     });
   })
 };
