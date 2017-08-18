@@ -2,7 +2,7 @@ let Data = require('./data_loader.js');
 let MapGrid = {};
 let attractionsArr = [];
 
-//0. attractions call
+//call attractions for a given area
 MapGrid.appendMap = (areaId) => {
 	Data.attractionsCall().then(function(data){
 		attractionsArr = [];
@@ -11,11 +11,13 @@ MapGrid.appendMap = (areaId) => {
 				attractionsArr.push(item);
 			}
 		});
+		//create map with attractions data
 		createGrid(attractionsArr ,getDimensions(attractionsArr.length), areaId);
 	});
 
 }
 
+//get map dimensions based on number of attractions
 function getDimensions(num) {
 	let arr = [];
 	let h, w = Math.ceil(Math.sqrt(num));
@@ -31,6 +33,7 @@ function getDimensions(num) {
 	return arr;
 }
 
+//create grid based on dimensions from number of attractions
 function createGrid(attractionsArr, dimensionsArr, appendId) {
 	let $map = $('<div></div>').addClass('map-grid');
 	let count = 0;
@@ -47,12 +50,13 @@ function createGrid(attractionsArr, dimensionsArr, appendId) {
 	$('#' + appendId).append($map);
 };
 
+//listen for a clicks, onclick append pin img to specified div in map grids
 window.addEventListener('click', function(e) {
 	$('.map-col').html('');
 	let img = document.createElement('img');
 	img.setAttribute('src', 'images/pin.svg');
 	img.classList.add('pin');
-	if(e.target.hasAttribute('aria-controls')){
+	if (e.target.hasAttribute('aria-controls')){
 		let colId = e.target.getAttribute('aria-controls');
 		let div = document.querySelector('.col-' + colId);
 		div.appendChild(img);

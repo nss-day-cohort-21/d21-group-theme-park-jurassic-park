@@ -68,7 +68,7 @@ var Templates = {
           let imgwrap = $(".img-wrapper");
           imgwrap.each((index,item)=>{
             if(Number(item.id)===dataArea[accordionid - 1].id){
-              $(item).find('img').attr('style', `border: 3px solid #${color}`);
+              $(item).find('.img').attr('style', `border: 3px solid #${color}`);
               let areaNamesss = $(item).children("a").html();
               let correctPTag = $(e.target).siblings("div").children(".areaNameDropDown").html(areaNamesss+`<br>`);
               let ariaControls = $(e.target).attr("aria-controls");
